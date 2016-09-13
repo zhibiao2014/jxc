@@ -5,6 +5,8 @@
 
 RewriteEngine On
 #RewriteBase /
+RewriteCond %{HTTP_HOST} !^/jxc.5kjr.com/admin/$ [NC]
+RewriteRule ^$ \/mobile
 
 # direct one-word access
 RewriteRule ^index\.html$    index\.php [L]
