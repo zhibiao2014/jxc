@@ -2129,7 +2129,7 @@ CREATE TABLE `ecs_chat_third_customer` (
 -- Records of ecs_chat_third_customer
 -- ----------------------------
 INSERT INTO `ecs_chat_third_customer` VALUES ('1', 'QQ客服', '800007396', '0', '1', '1454485214', '0');
-INSERT INTO `ecs_chat_third_customer` VALUES ('2', '旺旺', '深圳市联合精准农业服务科技有限公司', '1', '1', '1457353894', '0');
+INSERT INTO `ecs_chat_third_customer` VALUES ('2', '旺旺', '深圳庆丰裕', '1', '1', '1457353894', '0');
 INSERT INTO `ecs_chat_third_customer` VALUES ('3', 'QQ客服', '3345424724', '0', '1', '1457577453', '0');
 INSERT INTO `ecs_chat_third_customer` VALUES ('4', 'QQ客服', '3076189', '0', '1', '1458286111', '21');
 
