@@ -68,52 +68,31 @@ window.setTimeout( "run()", 2000 );
 </h2>
 <dl>
     <dt> <!-- TemplateBeginEditable name="手机端首页广告2-1" -->
-<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
-{insert name=ads id=$ads_id num=$ads_num}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> </dt>
     <dd> 
     <span class="Edge"> <!-- TemplateBeginEditable name="手机端首页广告2-2" -->
-<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
-{insert name=ads id=$ads_id num=$ads_num}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> </span> 
 <span> 
 <!-- TemplateBeginEditable name="手机端首页广告2-3" -->
-<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
-{insert name=ads id=$ads_id num=$ads_num}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> </span> </dd>
   </dl>
 <ul>
 <li class="brom">
  <!-- TemplateBeginEditable name="手机端首页广告3-1" -->
-<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
-{insert name=ads id=$ads_id num=$ads_num}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> 
 </li>
 <li>
  <!-- TemplateBeginEditable name="手机端首页广告3-2" -->
-<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
-{insert name=ads id=$ads_id num=$ads_num}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> 
 </li>
 </ul>
 <ul>
 <li class="brom">
  <!-- TemplateBeginEditable name="手机端首页广告4-1" -->
-<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
-{insert name=ads id=$ads_id num=$ads_num}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> 
 </li>
 <li>
  <!-- TemplateBeginEditable name="手机端首页广告4-2" -->
-<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
-{insert name=ads id=$ads_id num=$ads_num}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> 
 </li>
 </ul>
@@ -123,23 +102,10 @@ window.setTimeout( "run()", 2000 );
 <h4><span>{$lang.index_brand}</span><i><a href="brand.php">更多</a></i></h4> 
 <dl>
  <!-- TemplateBeginEditable name="首页品牌左侧广告" -->
-<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
-{insert name=ads id=$ads_id num=$ads_num}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> 
 </dl>
 <ul>
 <!-- TemplateBeginEditable name="首页推荐品牌" -->
-<!-- #BeginLibraryItem "/library/brands.lbi" -->
-
-{if $brand_list}
-{foreach from=$brand_list item=brand name=brand}
-{if $smarty.foreach.brand.iteration < 7}
-<li class="image"><a href="{$brand.url}" title="{$brand.brand_name|escape:html}"><img src="{$brand.brand_logo}" alt="{$brand.brand_name|escape:html}"/></a></li>
-{/if}
-{/foreach}
-{/if}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable -->
 </ul>
 </div>
@@ -147,150 +113,10 @@ window.setTimeout( "run()", 2000 );
 
 <!--促销商品-->
 <!-- TemplateBeginEditable name="首页促销模块" -->
-<!-- #BeginLibraryItem "/library/recommend_promotion.lbi" -->
-
-{if $promotion_goods}
-
-<script>
-var Tday = new Array();
-var daysms = 24 * 60 * 60 * 1000
-var hoursms = 60 * 60 * 1000
-var Secondms = 60 * 1000
-var microsecond = 1000
-var DifferHour = -1
-var DifferMinute = -1
-var DifferSecond = -1
-function clock(key)
-{
-   var time = new Date()
-   var hour = time.getHours()
-   var minute = time.getMinutes()
-   var second = time.getSeconds()
-   var timevalue = ""+((hour > 12) ? hour-12:hour)
-   timevalue +=((minute < 10) ? ":0":":")+minute
-   timevalue +=((second < 10) ? ":0":":")+second
-   timevalue +=((hour >12 ) ? " PM":" AM")
-   var convertHour = DifferHour
-   var convertMinute = DifferMinute
-   var convertSecond = DifferSecond
-   var Diffms = Tday[key].getTime() - time.getTime()
-   DifferHour = Math.floor(Diffms / daysms)
-   Diffms -= DifferHour * daysms
-   DifferMinute = Math.floor(Diffms / hoursms)
-   Diffms -= DifferMinute * hoursms
-   DifferSecond = Math.floor(Diffms / Secondms)
-   Diffms -= DifferSecond * Secondms
-   var dSecs = Math.floor(Diffms / microsecond)
-  
-      if(convertHour != DifferHour) a=DifferHour+":";
-   if(convertMinute != DifferMinute) b=DifferMinute+":";
-   if(convertSecond != DifferSecond) c=DifferSecond+":";
-     d=dSecs;
-     if (DifferHour>0) {a=a}
-     else {a=''}
-   document.getElementById("jstimerBox"+key).innerHTML = a + b + c + d; //显示倒计时信息
-}
-</script>
-<section class="floor_body">
-  <h4><span>{$lang.promotion_goods}</span><i><a href="../search.php?intro=promotion">更多</a></i></h4>
-    <div id="scroll_promotion" style=" background:#eeeeee">
-        <ul>
-          {foreach from=$promotion_goods item=goods name=promotion_goods key=key}
-          <li>
-            
-             <div class="index_pro"> 
-              <div class="products_kuang">
-               {if $goods.is_exclusive}
-               <div class="best_phone"> 手机专享</div>
-               {/if}
-              <div class="timerBox" id="jstimerBox{$key}">正在加载...</div>
-              
-               <a href="{$goods.url}" title="{$goods.name|escape:html}"> <img src="{$option.static_path}{$goods.thumb}"></a>
-                </div>
-              <div class="goods_name"><a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.name}</a></div>
-              <div class="price">
-              <a href="javascript:addToCart({$goods.id})" class="btns">
-                  <img src="themesmobile/68ecshopcom_mobile/images/index_flow.png"></a>
-                {if $goods.final_price}<span>{$goods.final_price}</span><em>{$goods.shop_price}</em>
-                {elseif $goods.promote_price}
-                <span> {$goods.promote_price}</span><em>{$goods.shop_price}</em>
-               {else}
-                <span> {$goods.market_price}</span><em>{$goods.shop_price}</em>
-               {/if}
-              </div>  
-</div>
-<script>
-Tday[{$key}] = new Date("{$goods.gmt_end_time}");  
-window.setInterval(function()    
-{clock({$key});}, 1000);  
-</script>
-          </li>
-      <!--{if $smarty.foreach.promotion_goods.iteration%3 eq 0 && $smarty.foreach.promotion_goods.iteration neq $smarty.foreach.promotion_goods.total}--> </ul>
-        <ul>
-          <!--{/if}-->
-          
-          {/foreach}
-</div>
-  </section>
-{/if}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> 
 
 <!---------------end-------------> 
 <!-- TemplateBeginEditable name="首页推荐模块" -->
-<!-- #BeginLibraryItem "/library/recommend_new.lbi" -->
-
-{if $new_goods}
-
-<section class="index_floor">
-
-  <h4><span>{$lang.new_goods}</span><i><a href="../search.php?intro=new">更多</a></i></h4>
-   
-    <div id="scroll_new" class="scroll_hot">
-      <div class="bd">
-        <ul>
-          {foreach from=$new_goods item=goods name=new_goods}
-          <li>
-             <div class="index_pro"> 
-              <div class="products_kuang">
-                {if $goods.is_exclusive} <div class="best_phone">手机专享</div>{/if}
-                <a href="{$goods.url}" title="{$goods.name|escape:html}">  <img src="{$option.static_path}{$goods.thumb}"> </a></div>
-              <div class="goods_name">  <a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.name}</a></div>
-              <div class="price">
-                 <a href="javascript:addToCart({$goods.id})" class="btns">
-                    <img src="themesmobile/68ecshopcom_mobile/images/index_flow.png">
-                </a>
-                {if $goods.final_price}<span>{$goods.final_price}</span><em>{$goods.shop_price}</em>
-                {elseif $goods.promote_price}
-              <span>{$goods.promote_price}</span><em>{$goods.shop_price}</em>
-               {else}
-               <span>{$goods.market_price}</span><em>{$goods.shop_price}</em>
-               {/if}
-              </div>
-              </div>
-          </li>
-
-          <!--{if $smarty.foreach.new_goods.iteration%3 eq 0 && $smarty.foreach.new_goods.iteration neq $smarty.foreach.new_goods.total}--> </ul>
-        <ul>
-          <!--{/if}-->{/foreach}</div>
-        <div class="hd">
-          <ul></ul>
-        </div>
-      </div>
-
-  </section>
-
-  <script type="text/javascript">
-    TouchSlide({ 
-      slideCell:"#scroll_new",
-      titCell:".hd ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
-      effect:"leftLoop", 
-      autoPage:true, //自动分页
-      //switchLoad:"_src" //切换加载，真实图片路径为"_src" 
-    });
-  </script>
-{/if}
- <!-- #EndLibraryItem -->
 <!-- #BeginLibraryItem "/library/recommend_hot.lbi" -->
 
 {if $hot_goods}
@@ -314,12 +140,7 @@ window.setInterval(function()
                    <a href="javascript:addToCart({$goods.id})" class="btns">
                     <img src="themesmobile/68ecshopcom_mobile/images/index_flow.png">
                 </a>
-                {if $goods.final_price}<span> {$goods.final_price}</span><em>{$goods.shop_price}</em>
-                {elseif $goods.promote_price}
-               <span> {$goods.promote_price}</span><em>{$goods.shop_price}</em>
-               {else}
-               <span> {$goods.market_price}</span> <em>{$goods.shop_price}</em>
-               {/if}
+                 <span>{$goods.final_price}</span><em>{if $goods.promote_price}{$goods.shop_price}{else}{$goods.market_price}{/if}</em>
               </div>
               </div>
            
@@ -350,55 +171,10 @@ window.setInterval(function()
 <!-- 楼层广告位--> 
 <div class="index_img">
  <!-- TemplateBeginEditable name="楼层广告位" -->
-<!-- #BeginLibraryItem "/library/ad_position.lbi" -->
-{insert name=ads id=$ads_id num=$ads_num}
- <!-- #EndLibraryItem -->
 <!-- TemplateEndEditable --> 
 </div>
 <!--商品楼层调用 start--> 
 <!-- TemplateBeginEditable name="首页楼层商品分类" -->
-<!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
-
-<?php
- $GLOBALS['smarty']->assign('thiscid1',get_wap_parent_id_tree($GLOBALS['smarty']->_var['goods_cat']['id']));
-?>
-<section class="floor_body">         
-      <h4><span>{$goods_cat.name|escape:html}</span><i><a href="{$goods_cat.url}">更多</a></i></h4>
-        <div style=" background:#eeeeee">
-        <ul>
-            <!--{foreach from=$cat_goods item=goods name=name}-->
-            <li>
-               
-                <div class="index_pro"> 
-                    <div class="products_kuang">
-                       <a href="{$goods.url}" title="{$goods.name|escape:html}"><img src="{$option.static_path}{$goods.thumb}"></a></div>
-                    <div class="goods_name"> <a href="{$goods.url}" title="{$goods.name|escape:html}">{$goods.name}</a></div>
-                    <div class="price">
-                            <a href="javascript:addToCart({$goods.id})" class="btns">
-                            <img src="themesmobile/68ecshopcom_mobile/images/index_flow.png"></a>
-                      {if $goods.promote_price}
-                <span> {$goods.promote_price}</span><em>{$goods.shop_price}</em>
-               {else}
-                <span> {$goods.market_price}</span><em>{$goods.shop_price}</em>
-               {/if}
-                    </div>
-                    </div>
- 
-            </li>
-            
-                <!--{if $smarty.foreach.name.iteration%3 eq 0 && $smarty.foreach.name.iteration neq $smarty.foreach.name.total}--> </ul>
-        <ul>
-          <!--{/if}-->
-          
-          {/foreach}
- </div>      
-</section>
-
-
-
-
-
- <!-- #EndLibraryItem -->
 <!-- #BeginLibraryItem "/library/cat_goods.lbi" -->
 
 <?php
