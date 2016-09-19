@@ -149,11 +149,10 @@ function sendSMS ($mobile, $content, $time = '', $mid = '')
 		'mid' => $mid
 	);
 	$re = postSMS($http, $data); // POST方式提交
-	                             
+	
 	// change_sms change_start
 	
 	$re_t = substr(trim($re), 3, 3);
-	
 	if(trim($re) == '100' || $re_t == '100')
 	
 	// change_sms change_end

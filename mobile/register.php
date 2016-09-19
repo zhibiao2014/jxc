@@ -255,6 +255,7 @@ function action_send_mobile_code ()
 	/* 发送激活验证邮件 */
 	// $result = true;
 	$result = sendSMS($mobile_phone, $content);
+
 	if($result)
 	{
 		

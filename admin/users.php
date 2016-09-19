@@ -334,8 +334,9 @@ function action_edit ()
 	$sql = "SELECT u.user_name, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn, u.office_phone, u.home_phone, u.mobile_phone" . " FROM " . $ecs->table('users') . " u LEFT JOIN " . $ecs->table('users') . " u2 ON u.parent_id = u2.user_id WHERE u.user_id='$_GET[id]'";
 	
 	$row = $db->GetRow($sql);
+	
 	$row['user_name'] = addslashes($row['user_name']);
-	$users = & init_users();
+	$users = &init_users();
 	$user = $users->get_user_info($row['user_name']);
 	/* 代码增加2014-12-23 by uppschina.com _star */
 	$sql = "SELECT u.user_id, u.sex, u.birthday, u.pay_points, u.rank_points, u.user_rank , u.user_money, u.frozen_money, u.credit_line, u.parent_id, u2.user_name as parent_username, u.qq, u.msn,
@@ -486,6 +487,7 @@ function action_edit ()
 	$smarty->assign('user', $user);
 	$smarty->assign('form_action', 'update');
 	$smarty->assign('special_ranks', get_rank_list(true));
+	
 	$smarty->display('user_info.htm');
 }
 
