@@ -201,7 +201,7 @@ $modules['02_supplier']['05_shop_street'] = 'supplier_street.php?act=list';
 /* 代码增加_end By uppschina.com */
 
 // 微信权限
-$modules['17_weixin_manage']['weixin_config'] = 'weixin.php?act=config';
+/* $modules['17_weixin_manage']['weixin_config'] = 'weixin.php?act=config';
 $modules['17_weixin_manage']['weixin_addconfig'] ='weixin.php?act=addconfig';
 $modules['17_weixin_manage']['weixin_menu'] = 'weixin.php?act=menu';
 $modules['17_weixin_manage']['weixin_notice'] = 'weixin.php?act=notice';
@@ -216,7 +216,7 @@ $modules['17_weixin_manage']['weixin_act'] = 'weixin_egg.php?act=list';
 $modules['17_weixin_manage']['weixin_award'] = 'weixin_egg.php?act=log';
 $modules['17_weixin_manage']['weixin_oauth'] = 'weixin.php?act=oauth';
 $modules['17_weixin_manage']['weixin_qiandao'] = 'weixin.php?act=qiandao';
-$modules['17_weixin_manage']['weixin_addkey'] = 'weixin.php?act=addkey';
+$modules['17_weixin_manage']['weixin_addkey'] = 'weixin.php?act=addkey'; */
 $modules['11_system']['website'] = 'website.php?act=list';
 /* 代码增加_start By uppschina.com */
 $modules['03_promotion']['16_takegoods_list'] = 'takegoods.php?act=list';
