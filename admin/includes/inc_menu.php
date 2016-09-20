@@ -228,11 +228,11 @@ $modules['02_cat_and_goods']['pricecut'] = 'pricecut.php?act=list&status=-1';
 $purview['pricecut'] = 'goods_manage';
 $_LANG['pricecut'] = '降价通知列表';
 /* 代码增加_end By uppschina.com */
-/* 代码增加_start By www.ecshop68.com */
+/* 代码增加_start By uppschina.com */
 $modules['17_pickup_point_manage']['pickup_point_list'] = 'pickup_point.php?act=list';
 $modules['17_pickup_point_manage']['pickup_point_add'] = 'pickup_point.php?act=add';
 $modules['17_pickup_point_manage']['pickup_point_batch_add'] = 'pickup_point.php?act=batch_add';
-/* 代码增加_end By www.ecshop68.com */
+/* 代码增加_end By uppschina.com */
 
 /* 代码增加_start By uppschina.com */
 $modules['03_promotion']['19_valuecard_list'] = 'valuecard.php?act=list';

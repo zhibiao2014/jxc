@@ -3923,9 +3923,9 @@ INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `stor
 INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('8', '0', 'sms', 'group', '', '', '', '1');
 INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('9', '0', 'wap', 'hidden', '', '', '', '1');
 INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('101', '1', 'shop_name', 'text', '', '', '小米商城', '1');
-INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('102', '1', 'shop_title', 'text', '', '', 'ecshop开发中心', '1');
-INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('103', '1', 'shop_desc', 'text', '', '', 'ecshop开发中心', '1');
-INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('104', '1', 'shop_keywords', 'text', '', '', 'ecshop开发中心', '1');
+INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('102', '1', 'shop_title', 'text', '', '', 'qfyu开发中心', '1');
+INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('103', '1', 'shop_desc', 'text', '', '', 'qfyu开发中心', '1');
+INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('104', '1', 'shop_keywords', 'text', '', '', 'qfyu开发中心', '1');
 INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('109', '1', 'qq', 'text', '', '', '2232191854', '1');
 INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('114', '1', 'service_email', 'text', '', '', 'fooro@126.com', '1');
 INSERT INTO `ecs_ecsmart_shop_config` ( `id`, `parent_id`, `code`, `type`, `store_range`, `store_dir`, `value`, `sort_order` ) VALUES  ('115', '1', 'service_phone', 'text', '', '', '051263866456', '1');

@@ -63,7 +63,7 @@
 	$result['category']=$goods;
 	//jx
 	//app头部名称
-	$result['app_title'] = 'ECSHOP开发中心';
+	$result['app_title'] = 'qfyu开发中心';
 	//楼层名称
 	$result['app_lou1'] = '掌上秒杀';
 	$result['app_lou2'] = '值得买';

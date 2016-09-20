@@ -266,14 +266,14 @@
     return true;
   }
 </script>
-{*  start Add By uppschina.com ecshop开发中心 企业QQ800007396 *}
+{*  start Add By uppschina.com qfyu开发中心 QQ276595510 *}
 <script language="javascript">
   document.getElementById("retData").innerHTML="<center>正在查询物流信息，请稍后...</center>";
   var expressid = document.getElementById("shipping_name").innerHTML;
   var expressno = document.getElementById("invoice_no").innerHTML;
   Ajax.call('../plugins/kuaidi100/kuaidi100_post.php?com='+ expressid+'&nu=' + expressno,'showtest=showtest', function(data){document.getElementById("retData").innerHTML=data;}, 'GET', 'TEXT');
 </script>
-{*  end Add By uppschina.com ecshop开发中心 企业QQ800007396 *}
+{*  end Add By uppschina.com qfyu开发中心 QQ276595510 *}
 {/literal}
 
 {include file="pagefooter.htm"}

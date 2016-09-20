@@ -36,7 +36,7 @@ if (isset($set_modules) && $set_modules == TRUE)
     $modules[$i]['desc']    = 'clear_file_desc';
 
     /* 作者 */
-    $modules[$i]['author']  = 'ECSHOP开发中心';
+    $modules[$i]['author']  = 'qfyu开发中心';
 
     /* 网址 */
     $modules[$i]['website'] = 'http://uppschina.com';
