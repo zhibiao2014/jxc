@@ -69,6 +69,7 @@ $user_id = isset($_SESSION['user_id'])?$_SESSION['user_id']:0;
 $action = isset($_REQUEST['act']) ? trim($_REQUEST['act']) : 'default';
 
 $affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
+
 $smarty->assign('affiliate', $affiliate);
 $back_act = '';
 
@@ -4688,12 +4689,12 @@ function action_affiliate()
 	if(empty($goodsid))
 	{
 		// 我的推荐页面
-		
 		$page = ! empty($_REQUEST['page']) && intval($_REQUEST['page']) > 0 ? intval($_REQUEST['page']) : 1;
 		$size = ! empty($_CFG['page_size']) && intval($_CFG['page_size']) > 0 ? intval($_CFG['page_size']) : 10;
-		
+		$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 		empty($affiliate) && $affiliate = array();
 		
+// 		var_dump($affiliate);exit();
 		if(empty($affiliate['config']['separate_by']))
 		{
 			// 推荐注册分成
@@ -4747,6 +4748,7 @@ function action_affiliate()
 		}
 		else
 		{
+// 			$affiliate = unserialize($GLOBALS['_CFG']['affiliate']);
 			// 推荐订单分成
 			$sqlcount = "SELECT count(*) FROM " . $ecs->table('order_info') . " o" . " LEFT JOIN" . $ecs->table('users') . " u ON o.user_id = u.user_id" . " LEFT JOIN " . $ecs->table('affiliate_log') . " a ON o.order_id = a.order_id" . " WHERE o.user_id > 0 AND (o.parent_id = '$user_id' AND o.is_separate = 0 OR a.user_id = '$user_id' AND o.is_separate > 0)";
 			
@@ -4767,7 +4769,7 @@ function action_affiliate()
 			
 			$affiliate_intro = nl2br(sprintf($_LANG['affiliate_intro'][$affiliate['config']['separate_by']], $affiliate['config']['expire'], $_LANG['expire_unit'][$affiliate['config']['expire_unit']], $affiliate['config']['level_money_all'], $affiliate['config']['level_point_all']));
 		}
-		
+// 		var_dump($_LANG['affiliate_intro']);exit();
 		$count = $db->getOne($sqlcount);
 		
 		$max_page = ($count > 0) ? ceil($count / $size) : 1;
