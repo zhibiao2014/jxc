@@ -65,7 +65,7 @@ $modules['04_order']['03_order_query'] = 'order.php?act=order_query';
 $modules['04_order']['04_merge_order'] = 'order.php?act=merge';
 $modules['04_order']['05_edit_order_print'] = 'order.php?act=templates';
 $modules['04_order']['06_undispose_booking'] = 'goods_booking.php?act=list_all';
-$modules['04_order']['07_repay_application'] = 'repay.php?act=list_all';
+// $modules['04_order']['07_repay_application'] = 'repay.php?act=list_all';
 $modules['04_order']['08_add_order'] = 'order.php?act=add';
 $modules['04_order']['09_delivery_order'] = 'order.php?act=delivery_list';
 $modules['04_order']['10_back_order'] = 'order.php?act=back_list';
@@ -246,6 +246,7 @@ $modules['20_chat']['customer'] = 'customer.php?act=list'; // 客服管理
 $modules['20_chat']['third_customer'] = 'third_customer.php?act=list'; // 三方客服
 
 /* 代码增加_start By uppschina.com */
+$_LANG['21_mobile'] = '手机管理';
 $_LANG['19_valuecard_list'] = '储值卡管理';
 $modules['21_mobile']['19_valuecard_list'] = 'valuecard.php?act=list';
 /* 代码增加_end By uppschina.com */
