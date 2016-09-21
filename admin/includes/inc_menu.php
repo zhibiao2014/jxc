@@ -41,14 +41,14 @@ $modules['02_cat_and_goods']['goods_auto'] = 'goods_auto.php?act=list';
 $modules['02_cat_and_goods']['scan_store'] = 'scan.php?act=insert';
 
 /* 入驻商管理  */
-$modules['02_supplier']['06_supplier_tag'] = 'supplier_tag.php?act=list';
+/* $modules['02_supplier']['06_supplier_tag'] = 'supplier_tag.php?act=list';
 $modules['02_supplier']['05_supplier_rank'] = 'supplier_rank.php?act=list';
 $modules['02_supplier']['01_supplier_reg'] = 'supplier.php?act=list';
 $modules['02_supplier']['02_supplier_list'] = 'supplier.php?act=list&status=1';
 $modules['02_supplier']['03_rebate_nopay'] = 'supplier_rebate.php?act=list';
 $modules['02_supplier']['03_rebate_pay'] = 'supplier_rebate.php?act=list&is_pay_ok=1';
 $modules['02_supplier']['04_shop_category'] = 'supplier_street_category.php?act=list';
-$modules['02_supplier']['05_shop_street'] = 'supplier_street.php?act=list';
+$modules['02_supplier']['05_shop_street'] = 'supplier_street.php?act=list'; */
 
 /* 促销管理  */
 $modules['03_promotion']['02_snatch_list'] = 'snatch.php?act=list';
@@ -155,26 +155,26 @@ $modules['11_system']['fckfile_manage'] = 'fckfile_manage.php?act=list';
 $modules['11_system']['021_reg_fields'] = 'reg_fields.php?act=list';
 
 /* 模板管理 */
-$modules['12_template']['02_template_select'] = 'template.php?act=list';
+/* $modules['12_template']['02_template_select'] = 'template.php?act=list';
 $modules['12_template']['03_template_setup'] = 'template.php?act=setup';
 $modules['12_template']['04_template_library'] = 'template.php?act=library';
 $modules['12_template']['05_edit_languages'] = 'edit_languages.php?act=list';
 $modules['12_template']['06_template_backup'] = 'template.php?act=backup_setting';
-$modules['12_template']['mail_template_manage'] = 'mail_template.php?act=list';
+$modules['12_template']['mail_template_manage'] = 'mail_template.php?act=list'; */
 
 /* 数据库管理 */
-$modules['13_backup']['02_db_manage'] = 'database.php?act=backup';
+/* $modules['13_backup']['02_db_manage'] = 'database.php?act=backup';
 $modules['13_backup']['03_db_optimize'] = 'database.php?act=optimize';
 $modules['13_backup']['04_sql_query'] = 'sql.php?act=main';
 $modules['13_backup']['05_synchronous'] = 'integrate.php?act=sync';
-$modules['13_backup']['convert'] = 'convert.php?act=main';
+$modules['13_backup']['convert'] = 'convert.php?act=main'; */
 
 /* 短信管理 */
-$modules['14_sms']['02_sms_my_info'] = 'sms.php?act=display_my_info';
+/* $modules['14_sms']['02_sms_my_info'] = 'sms.php?act=display_my_info';
 $modules['14_sms']['03_sms_send'] = 'sms.php?act=display_send_ui';
 $modules['14_sms']['04_sms_charge'] = 'sms.php?act=display_charge_ui';
 $modules['14_sms']['05_sms_send_history'] ='sms.php?act=display_send_history_ui';
-$modules['14_sms']['06_sms_charge_history'] ='sms.php?act=display_charge_history_ui';
+$modules['14_sms']['06_sms_charge_history'] ='sms.php?act=display_charge_history_ui'; */
 
 /* 推荐管理 */
 $modules['15_rec']['affiliate'] = 'affiliate.php?act=list';
@@ -205,18 +205,18 @@ $modules['17_weixin_manage']['weixin_qiandao'] = 'weixin.php?act=qiandao';
 $modules['17_weixin_manage']['weixin_addkey'] = 'weixin.php?act=addkey'; */
 
 /* 自提点管理 */
-$modules['17_pickup_point_manage']['pickup_point_list'] = 'pickup_point.php?act=list';
+/* $modules['17_pickup_point_manage']['pickup_point_list'] = 'pickup_point.php?act=list';
 $modules['17_pickup_point_manage']['pickup_point_add'] = 'pickup_point.php?act=add';
-$modules['17_pickup_point_manage']['pickup_point_batch_add'] = 'pickup_point.php?act=batch_add';
+$modules['17_pickup_point_manage']['pickup_point_batch_add'] = 'pickup_point.php?act=batch_add'; */
 
 /* 虚拟团购管理 */
-$modules['18_virtual']['virtual_goods_add'] = 'virtual_goods.php?act=add&extension_code=virtual_good'; // 添加虚拟商品
+/* $modules['18_virtual']['virtual_goods_add'] = 'virtual_goods.php?act=add&extension_code=virtual_good'; // 添加虚拟商品
 $modules['18_virtual']['virtual_goods_sup'] = 'virtual_goods.php?act=list&extension_code=virtual_good&supp=1'; // 虚拟商品列表
 $modules['18_virtual']['virtual_goods_list'] = 'virtual_goods.php?act=list&extension_code=virtual_good'; // 虚拟商品列表
 $modules['18_virtual']['virtual_card_list'] = 'virtual_goods_card.php?act=all_card';
 $modules['18_virtual']['virtual_validate'] = 'virtual_goods_card.php?act=verification_info';
 $modules['18_virtual']['virtual_category'] = 'category.php?act=virtual_list'; // 虚拟商品分类管理
-$modules['18_virtual']['virtual_district'] = 'virtual_goods.php?act=district'; // 虚拟商品商圈管理
+$modules['18_virtual']['virtual_district'] = 'virtual_goods.php?act=district'; // 虚拟商品商圈管理 */
 
 /* 即时通信 */
 $modules['20_chat']['chat_settings'] = 'chat_settings.php'; // 聊天服务设置
