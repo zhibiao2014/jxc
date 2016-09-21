@@ -61,7 +61,7 @@ $modules['03_promotion']['10_auction'] = 'auction.php?act=list';
 $modules['03_promotion']['12_favourable'] = 'favourable.php?act=list';
 $modules['03_promotion']['13_wholesale'] = 'wholesale.php?act=list';
 $modules['03_promotion']['14_package_list'] = 'package.php?act=list';
-$modules['03_promotion']['ebao_commend'] = 'ebao_commend.php?act=list';
+// $modules['03_promotion']['ebao_commend'] = 'ebao_commend.php?act=list';
 $modules['03_promotion']['15_exchange_goods'] = 'exchange_goods.php?act=list';
 $modules['03_promotion']['25_pre_sale_list'] = 'pre_sale.php?act=list'; // 预售
 
@@ -84,9 +84,17 @@ $modules['04_order']['12_kuaidi_order2'] = 'kuaidi_order.php?act=list&order_stat
 $modules['04_order']['12_invoice_list'] = 'order.php?act=invoice_list';
 
 /* 广告管理  */
-$modules['05_banner']['ad_position'] = 'ad_position.php?act=list';
-$modules['05_banner']['ad_list'] = 'ads.php?act=list';
+/* $modules['05_banner']['ad_position'] = 'ad_position.php?act=list';
+$modules['05_banner']['ad_list'] = 'ads.php?act=list'; */
 // $modules['05_banner']['ad_list'] = 'advert.php?act=list';
+/* 代码增加_start By zhibiao */
+// $_LANG['23_mobile_fenxiao'] = '手机广告管理';
+$_LANG['23_ad_position'] = '广告位置';
+$_LANG['23_ad_list'] = '广告列表';
+$modules['05_banner']['23_ad_position'] = '/mobile/admin/ad_position.php?act=list';
+$modules['05_banner']['23_ad_list'] = '/mobile/admin/ads.php?act=list';
+/* 代码增加_end By zhibiao */
+
 
 /* 报表统计  */
 $modules['06_stats']['flow_stats'] = 'flow_stats.php?act=view';
@@ -161,6 +169,15 @@ $modules['12_template']['04_template_library'] = 'template.php?act=library';
 $modules['12_template']['05_edit_languages'] = 'edit_languages.php?act=list';
 $modules['12_template']['06_template_backup'] = 'template.php?act=backup_setting';
 $modules['12_template']['mail_template_manage'] = 'mail_template.php?act=list'; */
+/* 代码增加_start By zhibiao */
+// $_LANG['24_mobile_view'] = '手机模板管理';
+$_LANG['24_view_setting'] = '设置模板';
+$_LANG['24_kxmgl'] = '库项目管理';
+$_LANG['24_yyxgl'] = '语言项编辑';
+$modules['12_template']['24_view_setting'] = '/mobile/admin/template.php?act=setup';
+$modules['12_template']['24_kxmgl'] = '/mobile/admin/template.php?act=library';
+$modules['12_template']['24_yyxgl'] = '/mobile/admin/edit_languages.php?act=list';
+/* 代码增加_end By zhibiao */
 
 /* 数据库管理 */
 /* $modules['13_backup']['02_db_manage'] = 'database.php?act=backup';
@@ -178,7 +195,22 @@ $modules['14_sms']['06_sms_charge_history'] ='sms.php?act=display_charge_history
 
 /* 推荐管理 */
 $modules['15_rec']['affiliate'] = 'affiliate.php?act=list';
-$modules['15_rec']['affiliate_ck'] = 'affiliate_ck.php?act=list';
+// $modules['15_rec']['affiliate_ck'] = 'affiliate_ck.php?act=list';
+/* 代码增加_start By zhibiao */
+// $_LANG['22_mobile_fenxiao'] = '手机分销管理';
+$_LANG['22_fenxiao_setting'] = '分销比例设置';
+$_LANG['22_fenxiao_list'] = '分销商列表';
+$_LANG['22_shopping_list'] = '分销商品列表';
+$_LANG['22_fcgl'] = '分成管理';
+$_LANG['22_fxphb'] = '分销排行榜';
+$_LANG['22_hytxjl'] = '会员提现记录';
+$modules['15_rec']['22_fenxiao_setting'] = '/mobile/admin/affiliate.php?act=list';
+$modules['15_rec']['22_fenxiao_list'] = '/mobile/admin/distributor.php?act=list';
+$modules['15_rec']['22_shopping_list'] = '/mobile/admin/distrib_goods.php?act=list';
+$modules['15_rec']['22_fcgl'] = '/mobile/admin/affiliate_ck.php?act=list';
+$modules['15_rec']['22_fxphb'] = '/mobile/admin/distrib_sort.php?act=list';
+$modules['15_rec']['22_hytxjl'] = '/mobile/admin/deposit_list.php?act=list';
+/* 代码增加_end By zhibiao */
 
 /* 邮件群发管理 */
 $modules['16_email_manage']['email_list'] = 'email_list.php?act=list';
@@ -251,40 +283,6 @@ $modules['21_mobile']['21_sqdl'] = '/mobile/admin/website.php?act=list';
 $modules['21_mobile']['21_yzmgl'] = '/mobile/admin/captcha_manage.php?act=main';
 $modules['21_mobile']['21_yjpz'] = '/mobile/admin/shop_config.php?act=mail_settings';
 $modules['21_mobile']['21_yjmbgl'] = '/mobile/admin/mail_template.php?act=list';
-/* 代码增加_end By zhibiao */
-
-/* 代码增加_start By zhibiao */
-$_LANG['22_mobile_fenxiao'] = '手机分销管理';
-$_LANG['22_fenxiao_setting'] = '分销比例设置';
-$_LANG['22_fenxiao_list'] = '分销商列表';
-$_LANG['22_shopping_list'] = '分销商品列表';
-$_LANG['22_fcgl'] = '分成管理';
-$_LANG['22_fxphb'] = '分销排行榜';
-$_LANG['22_hytxjl'] = '会员提现记录';
-$modules['22_mobile_fenxiao']['22_fenxiao_setting'] = '/mobile/admin/affiliate.php?act=list';
-$modules['22_mobile_fenxiao']['22_fenxiao_list'] = '/mobile/admin/distributor.php?act=list';
-$modules['22_mobile_fenxiao']['22_shopping_list'] = '/mobile/admin/distrib_goods.php?act=list';
-$modules['22_mobile_fenxiao']['22_fcgl'] = '/mobile/admin/affiliate_ck.php?act=list';
-$modules['22_mobile_fenxiao']['22_fxphb'] = '/mobile/admin/distrib_sort.php?act=list';
-$modules['22_mobile_fenxiao']['22_hytxjl'] = '/mobile/admin/deposit_list.php?act=list';
-/* 代码增加_end By zhibiao */
-
-/* 代码增加_start By zhibiao */
-$_LANG['23_mobile_fenxiao'] = '手机广告管理';
-$_LANG['23_ad_position'] = '广告位置';
-$_LANG['23_ad_list'] = '广告列表';
-$modules['23_mobile_fenxiao']['23_ad_position'] = '/mobile/admin/ad_position.php?act=list';
-$modules['23_mobile_fenxiao']['23_ad_list'] = '/mobile/admin/ads.php?act=list';
-/* 代码增加_end By zhibiao */
-
-/* 代码增加_start By zhibiao */
-$_LANG['24_mobile_view'] = '手机模板管理';
-$_LANG['24_view_setting'] = '设置模板';
-$_LANG['24_kxmgl'] = '库项目管理';
-$_LANG['24_yyxgl'] = '语言项编辑';
-$modules['24_mobile_view']['24_view_setting'] = '/mobile/admin/template.php?act=setup';
-$modules['24_mobile_view']['24_kxmgl'] = '/mobile/admin/template.php?act=library';
-$modules['24_mobile_view']['24_yyxgl'] = '/mobile/admin/edit_languages.php?act=list';
 /* 代码增加_end By zhibiao */
 
 ?>
