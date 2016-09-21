@@ -269,4 +269,22 @@ $modules['22_mobile_fenxiao']['22_fxphb'] = '/mobile/admin/distrib_sort.php?act=
 $modules['22_mobile_fenxiao']['22_hytxjl'] = '/mobile/admin/deposit_list.php?act=list';
 /* 代码增加_end By zhibiao */
 
+/* 代码增加_start By zhibiao */
+$_LANG['23_mobile_fenxiao'] = '手机广告管理';
+$_LANG['23_ad_position'] = '广告位置';
+$_LANG['23_ad_list'] = '广告列表';
+$modules['23_mobile_fenxiao']['23_ad_position'] = '/mobile/admin/ad_position.php?act=list';
+$modules['23_mobile_fenxiao']['23_ad_list'] = '/mobile/admin/ads.php?act=list';
+/* 代码增加_end By zhibiao */
+
+/* 代码增加_start By zhibiao */
+$_LANG['24_mobile_view'] = '手机模板管理';
+$_LANG['24_view_setting'] = '设置模板';
+$_LANG['24_kxmgl'] = '库项目管理';
+$_LANG['24_yyxgl'] = '语言项编辑';
+$modules['24_mobile_view']['24_view_setting'] = '/mobile/admin/template.php?act=setup';
+$modules['24_mobile_view']['24_kxmgl'] = '/mobile/admin/template.php?act=library';
+$modules['24_mobile_view']['24_yyxgl'] = '/mobile/admin/edit_languages.php?act=list';
+/* 代码增加_end By zhibiao */
+
 ?>
