@@ -194,7 +194,7 @@ $modules['14_sms']['05_sms_send_history'] ='sms.php?act=display_send_history_ui'
 $modules['14_sms']['06_sms_charge_history'] ='sms.php?act=display_charge_history_ui'; */
 
 /* 推荐管理 */
-$modules['15_rec']['affiliate'] = 'affiliate.php?act=list';
+// $modules['15_rec']['affiliate'] = 'affiliate.php?act=list';
 // $modules['15_rec']['affiliate_ck'] = 'affiliate_ck.php?act=list';
 /* 代码增加_start By zhibiao */
 // $_LANG['22_mobile_fenxiao'] = '手机分销管理';
