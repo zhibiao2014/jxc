@@ -105,7 +105,8 @@
 	<td>{$smarty.foreach.nav.iteration}</td>
 	<td><span onclick="listTable.edit(this, 'edit_point', '{$smarty.foreach.nav.iteration}'); return false;">{$val.level_point}</span></td>
 	<td><span onclick="listTable.edit(this, 'edit_money', '{$smarty.foreach.nav.iteration}'); return false;">{$val.level_money}</span></td>
-	<td ><a href="javascript:confirm_redirect(lang_removeconfirm, 'affiliate.php?act=del&id={$smarty.foreach.nav.iteration}')"><img style="border:0px;" src="images/no.gif" /></a></td>
+	<!-- <td ><a href="javascript:confirm_redirect(lang_removeconfirm, 'affiliate.php?act=del&id={$smarty.foreach.nav.iteration}')"><img style="border:0px;" src="images/no.gif" /></a></td> -->
+	<td >--</td>
 </tr>
 {/foreach}
 </table>
