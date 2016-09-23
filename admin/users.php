@@ -68,6 +68,7 @@ function action_list ()
 	
 	$user_list = user_list();
 // 	var_dump($user_list);exit();
+	$smarty->assign('yzk_user', $_LANG['yzk_user']);
 	$smarty->assign('user_list', $user_list['user_list']);
 	$smarty->assign('filter', $user_list['filter']);
 	$smarty->assign('record_count', $user_list['record_count']);

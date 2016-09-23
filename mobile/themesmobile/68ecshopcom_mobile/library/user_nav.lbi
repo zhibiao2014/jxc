@@ -6,7 +6,7 @@
 <i>{$rank_name}</i>
 <dl>
 <dt><a href="user.php?act=profile">设置</a></dt>
-<dd><span>{$info.username}</span></dd><dd class="roles"><font>用户</font><font>医生</font><font>省级代理</font></dd>
+<dd><span>{$info.username}</span></dd><dd class="roles">{if $info.is_patient != 0}<font>{$yzk_user}</font>{/if}{if $info.doctor_type != 0}<font>{$doctor_type[$info.doctor_type]}</font>{/if}{if $info.agency_type != 0}<font>{$agency_type[$info.agency_type]}</font>{/if}</dd>
 </dl>
 <!--
 <ul>

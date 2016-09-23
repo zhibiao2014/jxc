@@ -623,6 +623,9 @@ function get_user_default($user_id)
     $info['is_validated'] = $row['is_validated'];
     $info['validated'] = $row['validated'];
     $info['status'] = $row['status'];
+    $info['is_patient'] = $row['is_patient'];
+    $info['doctor_type'] = $row['doctor_type'];
+    $info['agency_type'] = $row['agency_type'];
 
     //如果$_SESSION中时间无效说明用户是第一次登录。取当前登录时间。
     $last_time = !isset($_SESSION['last_time']) ? $row['last_login'] : $_SESSION['last_time'];

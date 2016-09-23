@@ -441,9 +441,16 @@ function action_default()
             }
         }
 	
+        /* 会员角色  zhibiao 2016-09-23 */
+        $agency_type = unserialize($GLOBALS['_CFG']['agency_type']);
+        $smarty->assign('agency_type',$agency_type);
+        $doctor_type = unserialize($GLOBALS['_CFG']['doctor_type']);
+        $smarty->assign('doctor_type',$doctor_type);
+        
 	$recomm = $db->getOne("SELECT is_recomm FROM " . $GLOBALS['ecs']->table('user_rank') . " r" . " LEFT JOIN" . $GLOBALS['ecs']->table('users') . " u ON r.rank_id = u.user_rank" . " WHERE u.user_id = '$user_id'");
 	
 	$smarty->assign('recomm', $recomm);
+	$smarty->assign('yzk_user', $_LANG['yzk_user']);
 	
 	$smarty->assign('info', get_user_default($user_id));
 	$smarty->assign('user_notice', $_CFG['user_notice']);

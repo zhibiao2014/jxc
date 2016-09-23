@@ -118,4 +118,7 @@ $_LANG['js_languages']['invalid_pay_points'] = '消费积分数不是一个整�
 $_LANG['js_languages']['invalid_rank_points'] = '等级积分数不是一个整数。';
 $_LANG['js_languages']['password_len_err'] = '新密码和确认密码的长度不能小于6';
 $_LANG['js_languages']['invalid_mobile_phone'] = '没有输入手机号码或者输入了一个无效的手机号码。';
+
+/* 会员角色 */
+$_LANG['yzk_user'] = '用户';
 ?>

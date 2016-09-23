@@ -733,5 +733,7 @@ $_LANG['passwd_questions']['favorite_novel']  = '我最喜欢的小说？';
 $_LANG['passwd_questions']['favorite_equipe'] = '我最喜欢的运动队？';
 /* 我的收藏提示信息 */
 $_LANG['collection_empty'] = '您没有任何收藏哦！';
+/* 会员角色 */
+$_LANG['yzk_user'] = '用户';
 
 ?>
