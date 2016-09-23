@@ -6,7 +6,7 @@
 <i>{$rank_name}</i>
 <dl>
 <dt><a href="user.php?act=profile">设置</a></dt>
-<dd><span>{$info.username}</span></dd>
+<dd><span>{$info.username}</span></dd><dd class="roles"><font>用户</font><font>医生</font><font>省级代理</font></dd>
 </dl>
 <!--
 <ul>

@@ -41,6 +41,7 @@ function action_list ()
 {
 	// 全局变量
 	$user = $GLOBALS['user'];
+// 	var_dump($user);exit();
 	$_CFG = $GLOBALS['_CFG'];
 	$_LANG = $GLOBALS['_LANG'];
 	$smarty = $GLOBALS['smarty'];
@@ -66,13 +67,19 @@ function action_list ()
 	));
 	
 	$user_list = user_list();
-	
+// 	var_dump($user_list);exit();
 	$smarty->assign('user_list', $user_list['user_list']);
 	$smarty->assign('filter', $user_list['filter']);
 	$smarty->assign('record_count', $user_list['record_count']);
 	$smarty->assign('page_count', $user_list['page_count']);
 	$smarty->assign('full_page', 1);
 	$smarty->assign('sort_user_id', '<img src="images/sort_desc.gif">');
+	
+	/* 会员角色  zhibiao 2016-09-23 */
+	$agency_type = unserialize($GLOBALS['_CFG']['agency_type']);
+	$smarty->assign('agency_type',$agency_type);
+	$doctor_type = unserialize($GLOBALS['_CFG']['doctor_type']);
+	$smarty->assign('doctor_type',$doctor_type);
 	
 	assign_query_info();
 	$smarty->display('users_list.htm');
@@ -1084,7 +1091,7 @@ function user_list ()
 		// $sql = "SELECT user_id, user_name, email, is_validated,
 		// validated,status,user_money, frozen_money, rank_points, pay_points,
 		// reg_time ".
-		$sql = "SELECT user_id, user_name, email, mobile_phone, is_validated, validated, user_money, frozen_money, rank_points, pay_points, status, reg_time, froms ".
+		$sql = "SELECT user_id, user_name, is_patient, doctor_type, agency_type, email, mobile_phone, is_validated, validated, user_money, frozen_money, rank_points, pay_points, status, reg_time, froms ".
 		        /* 代码增加2014-12-23 by uppschina.com  _end  */
                 " FROM " . $GLOBALS['ecs']->table('users') . $ex_where . " ORDER by " . $filter['sort_by'] . ' ' . $filter['sort_order'] . " LIMIT " . $filter['start'] . ',' . $filter['page_size'];
 		

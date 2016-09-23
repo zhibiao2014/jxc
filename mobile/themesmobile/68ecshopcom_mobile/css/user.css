@@ -16,7 +16,7 @@
 
 .com_top dl dd{ width:78%; height:25px; float:right;}
 .com_top dl dd span{ display:block; float:left; font-size:18px; color:#FFF; line-height:25px;background:url(../images/user/geren.png) no-repeat right center;background-size: auto 25px; padding-right:25px; }
-
+.com_top dl .roles font{color: #fff;border: 1px solid #fff;border-radius: 5px;padding: 1px 4px;font-size: 13px;margin-right: 4px;}
 
 .com_top ul{ width:80%; height:40px; float:right; padding-bottom:10px; padding-top:10px;}
 .com_top ul li{ width:33%; float:left; line-height:20px; color:#666; text-align:center;border-right:1px solid #e5e5e5}
@@ -671,5 +671,5 @@ a.bnt_1{ text-align:center; color:#fff}
 .f_checkbox_t:checked {background-image: url(../images/user/flow_icon_order.png);background-position:0px -32px;}
 .f_checkbox_t:disabled { background-image: url(../images/user/flow_icon_order.png);background-position:0px -63px;}
 
-
+    
 

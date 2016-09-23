@@ -22,7 +22,7 @@ if($order_id > 0)
 {
 	$sql = "SELECT COUNT(*) FROM " . $GLOBALS['ecs']->table('order_info') . " WHERE order_id = '$order_id' AND user_id = '$user_id'";
 	$count = $GLOBALS['db']->getOne($sql);
-        if($count > 0)
+    if($count > 0)
 	{
 //		 $sql = "SELECT order_id,shipping_name, order_sn, shipping_status, invoice_no FROM " . $GLOBALS['ecs']->table('order_info') . " WHERE order_id = '$order_id'";
 //		 $order = $GLOBALS['db']->getRow($sql);
@@ -53,10 +53,10 @@ if($order_id > 0)
 //                 //获取订单中的商品
 //               $goods_list = order_goods($order['order_id']);
 //               $smarty->assign('goods_list',$goods_list);
-		 $kuaidi = new Express();
+		 		$kuaidi = new Express();
                 //处理多物流
                 $sql = "SELECT delivery_id,shipping_name,invoice_no  FROM ". $GLOBALS['ecs']->table('delivery_order'). " WHERE order_id = '$order_id'AND user_id = '$user_id'";  
-		$wuliu = $GLOBALS['db']->getAll($sql); 
+				$wuliu = $GLOBALS['db']->getAll($sql); 
                 $kuaidi_list = array();
                 foreach($wuliu as $key=>$value){
                     if($value['shipping_name'] == '同城快递'){
@@ -64,6 +64,7 @@ if($order_id > 0)
                     }else{
                         $result = $kuaidi->getorder($value['shipping_name'],$value['invoice_no']);
                     }
+//                     var_dump($result);
                     $kuaidi_list[$value['delivery_id']]['data'] = $result['data'];
                     $kuaidi_list[$value['delivery_id']]['shipping_name'] = $value['shipping_name'];
                     $kuaidi_list[$value['delivery_id']]['invoice_no'] = $value['invoice_no'];
@@ -81,7 +82,7 @@ else
 {
 	Header("Location: index.php\n"); 
 }
-
+// var_dump($kuaidi_list);exit();
 $smarty->display('kuaidi_list.dwt');
 
 ?>

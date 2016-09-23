@@ -95,8 +95,6 @@ class Express {
         return $file_contents;
     }
     
-    
-    
     private function json_array($json){
         if($json){
             foreach ((array)$json as $k=>$v){
@@ -107,7 +105,7 @@ class Express {
     }
     public function getorder($name,$order){
         $keywords = $this->getshipping($name);
-        //$result = $this->getcontent("http://www.kuaidi100.com/query?type={$keywords}&postid={$order}"); 
+//         $result = $this->getcontent("http://www.kuaidi100.com/query?type={$keywords}&postid={$order}"); 
         /* 快递100 api 收费 使用快递网接口 */
         $result = $this->getcontent("http://www.kuaidi.com/index-ajaxselectcourierinfo-$order-$keywords.html"); 
         $data = json_decode($result,true);
@@ -115,6 +113,7 @@ class Express {
         if(!$data['success']){
             $data['data'][0] = array('time'=> local_date('Y-m-d H:m:s', gmtime()),'context'=>'查询失败,请检查网络是否正常');
         }
+//         var_dump($result);exit();
         return $data;
     }
 }
