@@ -662,7 +662,7 @@ elseif ($_REQUEST['act'] == 'is_fenxiao')
 {
     $user_id       = intval($_POST['id']);
     $is_fenxiao    = intval($_POST['val']);
-	if ($exc->edit("is_fenxiao = '$is_fenxiao'", $user_id))
+	if ($exc->edit("is_fenxiao = '$is_fenxiao'", $user_id) && $exc->edit("doctor_type = '$is_fenxiao'", $user_id))
     {
         clear_cache_files();
         make_json_result($is_fenxiao);
