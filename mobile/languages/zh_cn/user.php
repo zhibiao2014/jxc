@@ -594,7 +594,7 @@ $_LANG['had_use'] = '已使用';
 /* 用户推荐 */
 $_LANG['affiliate_mode'] = '分成模式';
 $_LANG['affiliate_detail'] = '分成明细';
-$_LANG['affiliate_member'] = '我推荐的会员';
+$_LANG['affiliate_member'] = '我推荐的医生';
 $_LANG['affiliate_code'] = '推荐代码';
 $_LANG['firefox_copy_alert'] = "您的firefox安全限制限制您进行剪贴板操作，请打开’about:config’将signed.applets.codebase_principal_support’设置为true’之后重试";
 $_LANG['affiliate_type'][0] = '推荐注册分成';

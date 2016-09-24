@@ -85,6 +85,7 @@ if (!$smarty->is_cached('v_user_catelog.dwt', $cache_id))
 	
 	$smarty->assign('cat_list',get_cat_list($_SESSION['user_id']));
 }
+// var_dump(get_cat_list($_SESSION['user_id']));exit();
 $smarty->display("v_user_catelog.dwt", $cache_id);
 
 function get_cat_list($user_id)

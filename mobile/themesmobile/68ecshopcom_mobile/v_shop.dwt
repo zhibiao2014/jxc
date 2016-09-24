@@ -17,15 +17,15 @@
 <!--header-->
 <div class="dianpu_main">
 <dl>
-<dt>{if $user_info.headimgurl}<img src="{$user_info.headimgurl}" alt="店铺logo"/>{else}<img src="themesmobile/68ecshopcom_mobile/images/v-shop/userportrait.jpg" alt="头像"/>{/if}</dt>
-<dd>{if $dp_info.dianpu_name}{$dp_info.dianpu_name}的小店{/if}</dd>
+<dt>{if $user_info.headimgurl}<img src="{$user_info.headimgurl}" alt="诊所logo"/>{else}<img src="themesmobile/68ecshopcom_mobile/images/v-shop/userportrait.jpg" alt="头像"/>{/if}</dt>
+<dd>{if $dp_info.dianpu_name}{$dp_info.dianpu_name}的诊所{/if}</dd>
 </dl>
 
 </div>
 <ul class="Navigation">
 <li class="bian_r"><a href="v_shop_catelog.php"><i class="Nav1"></i><span>分类</span></a></li>
 <li class="bian_r"><a href="v_shop_list.php?user_id={$user_id}"><i>{$goods_count}</i><span>全部商品</span></a></li>
-<li onClick="choose_attr3(0)"><i class="Nav2"></i><span>店铺信息</span></li>
+<li onClick="choose_attr3(0)"><i class="Nav2"></i><span>诊所信息</span></li>
 </ul>
 <!--广告位1-->
 <div class="flo_one">
@@ -143,9 +143,9 @@ function goTop(){
 <section class="f_mask3" style="display: none;"></section>
 <section class="f_block3" id="choose_attr3" style="height:0; overflow:hidden;">
 <div class="subNavBox" > 
-	<h2>{if $user_info.headimgurl}<img src="{$user_info.headimgurl}" alt="店铺logo"/>{else}<img src="themesmobile/68ecshopcom_mobile/images/v-shop/userportrait.jpg" alt="头像"/>{/if}<span>{if $dp_info.dianpu_name}{$dp_info.dianpu_name}的小店{/if}</span></h2>
+	<h2>{if $user_info.headimgurl}<img src="{$user_info.headimgurl}" alt="诊所logo"/>{else}<img src="themesmobile/68ecshopcom_mobile/images/v-shop/userportrait.jpg" alt="头像"/>{/if}<span>{if $dp_info.dianpu_name}{$dp_info.dianpu_name}的诊所{/if}</span></h2>
 <dl>
-<dt>店铺简介：</dt>
+<dt>诊所简介：</dt>
 <dd>{$dp_info.dianpu_desc}</dd>
 </dl>
 <dl>

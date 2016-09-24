@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
-<title>小店上货</title>
+<title>诊所上货</title>
 <!--v_shop.css-->
 <link href="themesmobile/68ecshopcom_mobile/css/v_user.css" type="text/css" rel="stylesheet">
 </head>
@@ -12,12 +12,12 @@
 <div class="top">
 <dl>
 <dt><a href="javascript:history.back(-1)"></a></dt>
-<dd>小店上货</dd>
+<dd>诊所上货</dd>
 </dl>
 </div>
 <!--main-->
 <div class="usercatelog">
-<h2><span>温馨提示：选择您想要分销的商品分类，放到您的微店里展示！</span></h2>
+<h2><span>温馨提示：选择您想要分销的商品分类，放到您的诊所里展示！</span></h2>
 <form action="v_user_catelog.php" name="theForm" method="post" onsubmit="return sub_on_sale(this)">
 <ul>
 {if $cat_list}

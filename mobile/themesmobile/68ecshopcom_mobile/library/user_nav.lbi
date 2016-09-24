@@ -35,7 +35,7 @@
 <div class="Wallet main_top">
 <!--微分销菜单-->
 {if $is_distrib eq 1}
-<a href="v_user.php"><em class="Icon8"></em><dl class="border_bottm"><dt>我的分销</dt><dd>查看分销信息</dd></dl></a>
+<a href="v_user.php"><em class="Icon8"></em><dl class="border_bottm"><dt>我的诊所</dt><dd>查看诊所信息</dd></dl></a>
 {/if}
 
 <a href="user.php?act=my_comment"><em class="Icon1"></em><dl class="border_bottm"><dt>评价/晒单</dt><dd>查看评价/晒单</dd></dl></a>

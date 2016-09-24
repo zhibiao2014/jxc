@@ -6,10 +6,10 @@
 <ul>
 <li><a href="v_shop.php?user_id={$user_id}">
    <i class="footer_nav2"></i>
-    <span>微店</span></a></li>
+    <span>查看</span></a></li>
 <li><a href="v_user.php">
     <i class="footer_nav3"></i>
-    <span>分销中心</span></a></li>
+    <span>我的诊所</span></a></li>
 <li><a href="flow.php">
    <i class="footer_nav4"></i>
    <span>购物车</span>
