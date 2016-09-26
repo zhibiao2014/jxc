@@ -2826,7 +2826,6 @@ elseif ($_REQUEST['step'] == 'done')
 	    }
 	    $order['parent_id'] = $parent_id;
 		
-	    	/* 代码增加_start   By www.ecshop68.com */
 		/*  自提功能
 			获取订单确认页选择的自提点
 		*/
@@ -2835,8 +2834,7 @@ elseif ($_REQUEST['step'] == 'done')
 			$order['is_pickup'] = 1;
 		else
 			$order['is_pickup'] = 0;
-		$order['pickup_point'] = $pickup_point;
-		/* 代码增加_end   By www.ecshop68.com */
+			$order['pickup_point'] = $pickup_point;
 		//$order['order_sn'] = get_order_sn();
 		//file_put_contents('./inserttt'.$order['order_sn'].'.txt',var_export($order,true));
 		
@@ -2983,7 +2981,7 @@ elseif ($_REQUEST['step'] == 'done')
 	        change_order_goods_storage($order['order_id'], true, SDT_PLACE);
                 
 	    }
-	//$GLOBALS['db'] -> query("unlock tables");
+		//$GLOBALS['db'] -> query("unlock tables");
 	    /* 给商家发邮件 */
 	    /* 增加是否给客服发送邮件选项 */
 	    if ($_CFG['send_service_email'] && $_CFG['service_email'] != '')
@@ -2996,24 +2994,21 @@ elseif ($_REQUEST['step'] == 'done')
 	        $content = $smarty->fetch('str:' . $tpl['template_content']);
 	        send_mail($_CFG['shop_name'], $_CFG['service_email'], $tpl['template_subject'], $content, $tpl['is_html']);
 	    }
-            /* 处理虚拟团购商品 */
+        /* 处理虚拟团购商品 */
 	    /* 如果订单金额为0 处理虚拟卡 */
   
 	    if ($order['order_amount'] <= 0)
 	    {
-	    	/* 代码增加_start  By uppschina.com */
 	    	$sql = "SELECT goods_id, goods_name,extension_code, goods_attr_id, goods_number AS num FROM ".
 	               $GLOBALS['ecs']->table('cart') .
 	                " WHERE is_real = 0 ".
 	                " AND $sql_where AND rec_type = '$flow_type'";
-	        /* 代码增加_end  By uppschina.com */
 	        $res = $GLOBALS['db']->getAll($sql);
 	
 	        $virtual_goods = array();
                 $virtual_goods_num = 0;
 	        foreach ($res AS $row)
 	        {   
-                    /* 代码增加_start  By uppschina.com _sunlizhi*/
 //                    if($row['extension_code'] == 'virtual_good'){
 //                        $virtual_goods_num = $virtual_goods_num+1;
 //                    }
@@ -3069,10 +3064,7 @@ elseif ($_REQUEST['step'] == 'done')
 	                        /* 计算并发放积分 */
 	                        $integral = integral_to_give($order);
 	                        log_account_change($order['user_id'], 0, 0, intval($integral['rank_points']), intval($integral['custom_points']), sprintf($_LANG['order_gift_integral'], $order['order_sn']));
-
-
 	                        /* 发放红包 */
-							
 	                        send_order_bonus($order['order_id']);
 	                    }
 	                }
@@ -3097,9 +3089,7 @@ elseif ($_REQUEST['step'] == 'done')
     	$sql="delete from ".$GLOBALS['ecs']->table('order_info')." where order_id='$del_patent_id' ";
 		$GLOBALS['db']->query($sql);
     }
-    
-
-	/* 代码增加_start  By  uppschina.com */
+   
 	//$split_order = split_order($new_order_id);
 	$smarty->assign('split_order',      $split_order);
 	/* 如果需要，发短信 */
@@ -3138,7 +3128,6 @@ elseif ($_REQUEST['step'] == 'done')
 
         $pay_online = array('online'=>1);//$pay_obj->get_code($order, unserialize_config($payment['pay_config']));
 		
-		/* 代码修改_start  By www.ecshop68.com */
 		$payment_www_com=unserialize_config($payment['pay_config']);
 		if ($payment['pay_code']=='alipay_bank')
 		{
@@ -3146,8 +3135,6 @@ elseif ($_REQUEST['step'] == 'done')
 			
 			$pay_online = $pay_obj->get_code($order, $payment_www_com);			
 		}
-        
-		/* 代码修改_end  By www.ecshop68.com */
 
         $order['pay_desc'] = $payment['pay_desc'];
 
