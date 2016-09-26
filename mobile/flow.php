@@ -1188,7 +1188,7 @@ elseif ($_REQUEST['step'] == 'checkout')
         AND t.`region_id`='".$consignee['city']."'  
         AND d.`region_id`='".$consignee['district']."'";  
   
-$consignee['region'] = $db->getOne($sql); 
+	$consignee['region'] = $db->getOne($sql); 
     $smarty->assign('consignee', $consignee);
 
     include_once('includes/lib_transaction.php');
