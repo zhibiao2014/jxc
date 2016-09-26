@@ -328,6 +328,9 @@ function ShowToDoList()
 var adminId = "{$admin_id}"; 
 </script>
 <script>
+function refresh_main(){
+	window.parent.frames["main_frame"].location.reload();
+}
 function toggleMenu_top(){
 frmBody1 = parent.document.getElementById('frame-all');
  if (frmBody1.rows == "113,*")
@@ -369,8 +372,9 @@ frmBody1.rows="113,*";
 <li class="show_11"><a onclick="clear_cache_mobile()"   target="main_frame">手机缓存</a></li>
 <li class="show_4"><a onclick="clear_cache()"  target="main_frame">{$lang.clear_cache}</a></li>
 <li class="show_4"><a onclick="clear_html()"   target="main_frame">更新全部静态</a></li>
-<li class="show_4"><a onclick="clear_index()"  target="main_frame">更新首页静态</a></li>
+<!-- <li class="show_4"><a onclick="clear_index()"  target="main_frame">更新首页静态</a></li> -->
 <li class="show_1"><a href="../" target="_blank">{$lang.preview}</a></li>
+<li class="show_4"><a onclick="refresh_main()"  target="main_frame">刷新</a></li>
 <!-- <li class="show_7"><a href="/mobile/admin/index.php"  target="_blank">手机后台管理</a></li> -->
 </ul>
    {if $send_mail_on eq 'on'}
