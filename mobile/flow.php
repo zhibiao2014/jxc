@@ -2844,9 +2844,7 @@ elseif ($_REQUEST['step'] == 'done')
 		unset($order);
     }
     //组装拆分的子订单数组信息end
-    
-    
-    
+   
     //判断是否拆分为多个订单,多个订单就生成父订单id号
     $del_patent_id = 0;
     if(count($order_info)>1){
@@ -3049,13 +3047,9 @@ elseif ($_REQUEST['step'] == 'done')
 	                        " AND is_real = 1";
 	                if ($db->getOne($sql) <= 0)
 	                {
-
-
 	                    /* 修改订单状态 */
 	                    update_order($order['order_id'], array('shipping_status' => SS_SHIPPED, 'shipping_time' => gmtime()));
 	                    /* 如果订单用户不为空，计算积分，并发给用户；发红包 */
-
-                       
 	                    if ($order['user_id'] > 0)
 	                    {
 	                        /* 取得用户信息 */
