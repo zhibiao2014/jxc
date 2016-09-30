@@ -819,12 +819,7 @@ function push_user_msg($ecuid,$order_sn,$split_money){
 		$content = serialize($content);
 		$sendtime = $sendtime ? $sendtime : time();
 		$createtime = time();
-		$sql = "insert into ".$GLOBALS['ecs']->table('weixin_corn')." 
-
-(`ecuid`,`content`,`createtime`,`sendtime`,`issend`,`sendtype`) 
-			value ({$ecuid},'{$content}','{$createtime}','{$sendtime}','0',
-
-{$type})";
+		$sql = "insert into ".$GLOBALS['ecs']->table('weixin_corn')."(`ecuid`,`content`,`createtime`,`sendtime`,`issend`,`sendtype`) value ({$ecuid},'{$content}','{$createtime}','{$sendtime}','0',{$type})";
 		$GLOBALS['db']->query($sql);
 		return true;
 	}else{
@@ -835,8 +830,7 @@ function push_user_msg($ecuid,$order_sn,$split_money){
 function insert_affiliate_log($oid, $uid, $username, $money, $separate_by,$change_desc)
 {
     $time = gmtime();
-    $sql = "INSERT INTO " . $GLOBALS['ecs']->table('affiliate_log') . "( order_id, user_id, user_name, time, money, separate_type,change_desc)".
-                                                              " VALUES ( '$oid', '$uid', '$username', '$time', '$money', '$separate_by','$change_desc')";
+    $sql = "INSERT INTO " . $GLOBALS['ecs']->table('affiliate_log') . "( order_id, user_id, user_name, time, money, separate_type,change_desc)". " VALUES ( '$oid', '$uid', '$username', '$time', '$money', '$separate_by','$change_desc')";
     if ($oid)
     {
         $GLOBALS['db']->query($sql);
