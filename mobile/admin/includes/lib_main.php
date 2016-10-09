@@ -6,7 +6,7 @@
  * * 版权所有 2016 深圳庆丰裕，并保留所有权利。
  * 网站地址: http://uppschina.com;
  * ----------------------------------------------------------------------------
- 
+
  * ============================================================================
  * $Author: derek $
  * $Id: lib_main.php 17217 2011-01-19 06:29:08Z derek $
@@ -351,12 +351,12 @@ function get_distrib_goods_list($filter)
 	//入驻商的商品是否可加入到分销商品中
 	if($GLOBALS['_CFG']['is_add_distrib'] == 0)
 	{
-		$where .= " AND g.supplier_id = 0 "; 
+		$where .= " AND g.supplier_id = 0 ";
 	}
 	//可搜索条数
 	if($GLOBALS['_CFG']['search_goods_count'] > 0)
 	{
-		$where .= " LIMIT " . $GLOBALS['_CFG']['search_goods_count']; 
+		$where .= " LIMIT " . $GLOBALS['_CFG']['search_goods_count'];
 	}
     /* 取得数据 */
     $sql = 'SELECT goods_id, goods_name, shop_price '.

@@ -6,7 +6,7 @@
  * * 版权所有 2016 深圳庆丰裕，并保留所有权利。
  * 网站地址: http://uppschina.com;
  * ----------------------------------------------------------------------------
- 
+
  * ============================================================================
  * $Author: derek $
  * $Id: lib_transaction.php 17217 2011-01-19 06:29:08Z derek $
@@ -246,7 +246,7 @@ function add_bonus($user_id, $bouns_sn)
     if(empty($bouns_sn)){
         //请输入红包序号
        $GLOBALS['err']->add($GLOBALS['_LANG']['bonus_is_null']);
-        
+
         return false;
     }
     /* 查询红包序列号是否已经存在 */
@@ -401,7 +401,7 @@ function get_user_orders_ajax($user_id, $limit,$where='')
     foreach ($res as $key=>$row)
     {
         if ($row['order_status'] == OS_UNCONFIRMED)
-        {            
+        {
             if(in_array($row['pay_id'],payment_id_list(true))){
                 @$row['handler'] = '<span>'.$GLOBALS['_LANG']['cod'].'</span>';
             }else{
@@ -410,7 +410,7 @@ function get_user_orders_ajax($user_id, $limit,$where='')
             @$row['handler'] .= " <a href=\"user.php?act=cancel_order&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$GLOBALS['_LANG']['confirm_cancel']."')) return false;\">".$GLOBALS['_LANG']['cancel']."</a>";
         }
         else if ($row['order_status'] == OS_SPLITED || $row['order_status'] == OS_CONFIRMED)
-        {  
+        {
             /* 对配送状态的处理 */
             if ($row['shipping_status'] == SS_SHIPPED)
             {
@@ -426,16 +426,16 @@ function get_user_orders_ajax($user_id, $limit,$where='')
 				@$okgoods_time = $GLOBALS['db']->getOne("select value from " . $GLOBALS['ecs']->table('shop_config') . " where code='okgoods_time'");
 				@$row_time = $okgoods_time - (local_date('d',gmtime()) - local_date('d',$row['shipping_time']));
                 //@$row['handler'] = "<strong><img src='themesmobile/68ecshopcom_mobile/images/time.png' height='30px' style='vertical-align:middle;'/>还剩" . $row_time . "天自动收货</strong><a href=\"user.php?act=affirm_received&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$back_info.$GLOBALS['_LANG']['confirm_received']."')) return false;\" style='display:inline-block; margin-top:12px; width:80px; height:25px; font-size:14px; line-height:25px; border:1px solid #F60; color:#fff; text-align:center;border-radius:5px; background:#F60 '>".$GLOBALS['_LANG']['received']."</a>";
-                                @$row['handler'] = "<a href='kuaidi_list.php?order_id=$row[order_id]'>".$GLOBALS['_LANG']['view_wuliu'] ."</a>";                
+                                @$row['handler'] = "<a href='kuaidi_list.php?order_id=$row[order_id]'>".$GLOBALS['_LANG']['view_wuliu'] ."</a>";
                                 @$row['handler'] .= " <a style='background:#E71F19; color:#fff; border:1px solid #E71F19' href=\"user.php?act=affirm_received&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$back_info.$GLOBALS['_LANG']['confirm_received']."')) return false;\">".$GLOBALS['_LANG']['received']."</a><i>还剩" . $row_time . "天自动收货</i>";
-                
+
             }
             elseif ($row['shipping_status'] == SS_RECEIVED)
             {
                 $goods_list = get_order_goods($row);
                 foreach($goods_list as $key=>$goods){
                     if(!$goods['comment_state']){
-                         @$row['handler'] = '<a href="user.php?act=my_comment&state=wait">'.$GLOBALS['_LANG']['comment_shaidan'] .'</a>';  
+                         @$row['handler'] = '<a href="user.php?act=my_comment&state=wait">'.$GLOBALS['_LANG']['comment_shaidan'] .'</a>';
                     }
                 }
                 @$row['handler'] .= " <a href='kuaidi_list.php?order_id=$row[order_id]'>".$GLOBALS['_LANG']['view_wuliu'] ."</a>";
@@ -462,11 +462,11 @@ function get_user_orders_ajax($user_id, $limit,$where='')
         $row['shipping_status'] = ($row['shipping_status'] == SS_SHIPPED_ING) ? SS_PREPARING : $row['shipping_status'];
 	$row['order_status1'] = $row['order_status'];
         $row['order_status'] = $GLOBALS['_LANG']['os'][$row['order_status']] . ',' . $GLOBALS['_LANG']['ps'][$row['pay_status']] . ',' . $GLOBALS['_LANG']['ss'][$row['shipping_status']];
-		
+
         $cod_code = $GLOBALS['db']->getOne("select pay_code from " . $GLOBALS['ecs']->table('payment') . " where pay_id=" . $row['pay_id']);
 		$weixiu_time = $GLOBALS['db']->getOne("select value from " . $GLOBALS['ecs']->table('ecsmart_shop_config') . " where code='weixiu_time'");
 		$row['weixiu_time'] = ($weixiu_time - (local_date('d',gmtime()) - local_date('d',$order['shipping_time_end'])) <= 0) ? 0 : 1;
-		
+
 		$back_can_a = 1;
 		$comment_s = 0;
 		$shaidan_s = 0;
@@ -519,11 +519,11 @@ function get_user_orders_ajax($user_id, $limit,$where='')
 //获取订单中商品
 function get_order_goods($order)
 {
-	
+
 	/* 取得订单商品及货品 */
     $goods_list = array();
     $goods_attr = array();
-    $sql = "SELECT o.*, IF(o.product_id > 0, p.product_number, g.goods_number) AS storage, o.goods_attr, o.goods_attr_id, g.suppliers_id, IFNULL(b.brand_name, '') AS brand_name, p.product_sn, a.attr_value,g.goods_thumb,g.goods_id 
+    $sql = "SELECT o.*, IF(o.product_id > 0, p.product_number, g.goods_number) AS storage, o.goods_attr, o.goods_attr_id, g.suppliers_id, IFNULL(b.brand_name, '') AS brand_name, p.product_sn, a.attr_value,g.goods_thumb,g.goods_id
             FROM " . $GLOBALS['ecs']->table('order_goods') . " AS o
                 LEFT JOIN " . $GLOBALS['ecs']->table('products') . " AS p
                     ON p.product_id = o.product_id
@@ -570,7 +570,7 @@ function get_order_goods($order)
     }
 
 	foreach ($goods_list as $goods_key => $goods_val)
-	{  
+	{
 		$sql_goods = "select bo.*,bg.product_id from ". $GLOBALS['ecs']->table('back_order') . " as bo " .
 					" left join " . $GLOBALS['ecs']->table('back_goods') . " as bg " .
 					" on bo.back_id = bg.back_id and bo.goods_id = bg.goods_id" .
@@ -578,7 +578,7 @@ function get_order_goods($order)
 					" and bg.product_id='$goods_val[product_id]' and bo.status_back < 6";
 		$back_order =$GLOBALS['db']->getRow($sql_goods);
 		$goods_list[$goods_key]['back_can'] =  count($back_order['order_id']) > 0 ? '0' : '1';
-		
+
 		switch ($back_order['status_back'])
 		{
 			case '3' : $sb = "已完成"; break;
@@ -587,7 +587,7 @@ function get_order_goods($order)
 			//case '7' : $sb = ""; break;
 			default : $sb = "正在"; break;
 		}
-		
+
 		switch ($back_order['back_type'])
 		{
 			case '1' : $bt = "退货"; break;
@@ -595,10 +595,10 @@ function get_order_goods($order)
 			case '4' : $bt = "退款"; break;
 			default : break;
 		}
-		
+
 		$goods_list[$goods_key]['back_can_no'] = $sb . " " . $bt;
 	}
-	
+
 	return $goods_list;
 }
 /**
@@ -1350,11 +1350,11 @@ function get_user_bouns_list($user_id, $num = 10, $start = 0, $suppid=-1)
            " FROM " .$GLOBALS['ecs']->table('user_bonus'). " AS u ,".
            $GLOBALS['ecs']->table('bonus_type'). " AS b".
            " WHERE u.bonus_type_id = b.type_id AND u.user_id = '" .$user_id. "'";
-    
+
     if($suppid>-1){
     	$sql .= " AND u.supplier_id=".intval($suppid);
     }
-           
+
     $res = $GLOBALS['db']->selectLimit($sql, $num, $start);
     $arr = array();
 
@@ -1469,17 +1469,17 @@ function get_order_handler($order){
                 //@$row['handler'] = "<strong><img src='themesmobile/68ecshopcom_mobile/images/time.png' height='30px' style='vertical-align:middle;'/>还剩" . $row_time . "天自动收货</strong><a href=\"user.php?act=affirm_received&order_id=" .$row['order_id']. "\" onclick=\"if (!confirm('".$back_info.$GLOBALS['_LANG']['confirm_received']."')) return false;\" style='display:inline-block; margin-top:12px; width:80px; height:25px; font-size:14px; line-height:25px; border:1px solid #F60; color:#fff; text-align:center;border-radius:5px; background:#F60 '>".$GLOBALS['_LANG']['received']."</a>";
                 @$okgoods_time = $GLOBALS['db']->getOne("select value from " . $GLOBALS['ecs']->table('shop_config') . " where code='okgoods_time'");
                 @$row_time = $okgoods_time - (local_date('d',gmtime()) - local_date('d',$order['shipping_time']));
-                $handler['handler'] = "<a href='kuaidi_list.php?order_id=$order[order_id]'>".$GLOBALS['_LANG']['view_wuliu'] ."</a>";                
+                $handler['handler'] = "<a href='kuaidi_list.php?order_id=$order[order_id]'>".$GLOBALS['_LANG']['view_wuliu'] ."</a>";
                 $handler['handler'] .= " <a href=\"user.php?act=affirm_received&order_id=" .$order['order_id']. "\" onclick=\"if (!confirm('".$back_info.$GLOBALS['_LANG']['confirm_received']."')) return false;\">".$GLOBALS['_LANG']['received']."</a>";
-                
-                
+
+
            }
             else if ($order['shipping_status'] == SS_RECEIVED)
             {
                 $goods_list = get_order_goods($order);
                 foreach($goods_list as $key=>$goods){
                     if(!$goods['comment_state']){
-                         $handler['handler'] = '<a href="user.php?act=my_comment">'.$GLOBALS['_LANG']['comment_shaidan'] .'</a>';  
+                         $handler['handler'] = '<a href="user.php?act=my_comment">'.$GLOBALS['_LANG']['comment_shaidan'] .'</a>';
                     }
                 }
                 $handler['handler'] .= " <a href='kuaidi_list.php?order_id=$order[order_id]'>".$GLOBALS['_LANG']['view_wuliu'] ."</a>";
@@ -1488,9 +1488,9 @@ function get_order_handler($order){
         }
         else
         {
-           
+
             $handler['handler'] = '<a>'.$GLOBALS['_LANG']['os'][$order['order_status']] .'</a>';
-        } 
+        }
         return $handler;
 }
 
