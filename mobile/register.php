@@ -6,7 +6,7 @@
  * * 版权所有 20162 深圳庆丰裕，并保留所有权利。
  * 网站地址: http://jxc.5kjr.com；
  * ----------------------------------------------------------------------------
- 
+
  * ============================================================================
  * $Author: luozhibiao $
  * $Id: register.php 17217 2015-08-07 06:29:08Z niqingyang $
@@ -70,14 +70,14 @@ function action_send_email_code ()
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
 	$user_id = $_SESSION['user_id'];
-	
+
 	/* 载入语言文件 */
 	require_once (ROOT_PATH . 'languages/' . $_CFG['lang'] . '/user.php');
-	
+
 	require_once (ROOT_PATH . 'includes/lib_validate_record.php');
-	
+
 	$email = trim($_REQUEST['email']);
-	
+
 	/* 验证码检查 */
 	if((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
 	{
@@ -86,19 +86,19 @@ function action_send_email_code ()
 			exit($_LANG['invalid_captcha']);
 			return;
 		}
-			
+
 		/* 检查验证码 */
 		include_once ('includes/cls_captcha.php');
-			
+
 		$captcha = new captcha();
-			
+
 		if(! $captcha->check_word(trim($_POST['captcha'])))
 		{
 			exit($_LANG['invalid_captcha']);
 			return;
 		}
 	}
-	
+
 	if(empty($email))
 	{
 		exit("邮箱不能为空");
@@ -111,9 +111,9 @@ function action_send_email_code ()
 	}
 	else if(check_validate_record_exist($email))
 	{
-		
+
 		$record = get_validate_record($email);
-		
+
 		/**
 		 * 检查是过了限制发送邮件的时间
 		 */
@@ -123,20 +123,20 @@ function action_send_email_code ()
 			return;
 		}
 	}
-	
+
 	require_once (ROOT_PATH . 'includes/lib_passport.php');
-	
+
 	/* 设置验证邮件模板所需要的内容信息 */
 	$template = get_mail_template('reg_email_code');
 	// 生成邮箱验证码
 	$email_code = rand_number(6);
-	
+
 	$GLOBALS['smarty']->assign('email_code', $email_code);
 	$GLOBALS['smarty']->assign('shop_name', $GLOBALS['_CFG']['shop_name']);
 	$GLOBALS['smarty']->assign('send_date', date($GLOBALS['_CFG']['date_format']));
-	
+
 	$content = $GLOBALS['smarty']->fetch('str:' . $template['template_content']);
-	
+
 	/* 发送激活验证邮件 */
 	$result = send_mail($email, $email, $template['template_subject'], $content, $template['is_html']);
 	if($result)
@@ -145,7 +145,7 @@ function action_send_email_code ()
 		$_SESSION[VT_EMAIL_REGISTER] = $email;
 		// 保存验证记录
 		save_validate_record($email, $email_code, VT_EMAIL_REGISTER, time(), time() + 30 * 60);
-		
+
 		echo 'ok';
 	}
 	else
@@ -157,7 +157,7 @@ function action_send_email_code ()
 /* 发送注册邮箱验证码到邮箱 */
 function action_send_mobile_code ()
 {
-	
+
 	// 获取全局变量
 	$user = $GLOBALS['user'];
 	$_CFG = $GLOBALS['_CFG'];
@@ -166,14 +166,14 @@ function action_send_mobile_code ()
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
 	$user_id = $_SESSION['user_id'];
-	
+
 	/* 载入语言文件 */
 	require_once (ROOT_PATH . 'languages/' . $_CFG['lang'] . '/user.php');
-	
+
 	require_once (ROOT_PATH . 'includes/lib_validate_record.php');
-	
+
 	$mobile_phone = trim($_REQUEST['mobile_phone']);
-	
+
 	/* 验证码检查 */
 	if((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
 	{
@@ -182,19 +182,19 @@ function action_send_mobile_code ()
 			exit($_LANG['invalid_captcha']);
 			return;
 		}
-			
+
 		/* 检查验证码 */
 		include_once ('includes/cls_captcha.php');
-			
+
 		$captcha = new captcha();
-			
+
 		if(! $captcha->check_word(trim($_POST['captcha'])))
 		{
 			exit($_LANG['invalid_captcha']);
 			return;
 		}
 	}
-	
+
 	if(empty($mobile_phone))
 	{
 		exit("手机号不能为空");
@@ -209,7 +209,7 @@ function action_send_mobile_code ()
 	{
 		// 获取数据库中的验证记录
 		$record = get_validate_record($mobile_phone);
-		
+
 		/**
 		 * 检查是过了限制发送短信的时间
 		 */
@@ -217,12 +217,12 @@ function action_send_mobile_code ()
 		$expired_time = $record['expired_time'];
 		$create_time = $record['create_time'];
 		$count = $record['count'];
-		
+
 		// 每天每个手机号最多发送的验证码数量
 		$max_sms_count = 10;
 		// 发送最多验证码数量的限制时间，默认为24小时
 		$max_sms_count_time = 60 * 60 * 24;
-		
+
 		if((time() - $last_send_time) < 60)
 		{
 			echo ("每60秒内只能发送一次短信验证码，请稍候重试");
@@ -238,26 +238,26 @@ function action_send_mobile_code ()
 			$count ++;
 		}
 	}
-	
+
 	require_once (ROOT_PATH . 'includes/lib_passport.php');
-	
+
 	// 设置为空
 	$_SESSION['mobile_register'] = array();
-	
+
 	require_once (ROOT_PATH . 'sms/sms.php');
-	
+
 	// 生成6位短信验证码
 	$mobile_code = rand_number(6);
 	// 短信内容
 	$content = sprintf($_LANG['mobile_code_template'], $GLOBALS['_CFG']['shop_name'], $mobile_code, $GLOBALS['_CFG']['shop_name']);
-	
+
 	/* 发送激活验证邮件 */
 	// $result = true;
 	$result = sendSMS($mobile_phone, $content);
 
 	if($result)
 	{
-		
+
 		if(! isset($count))
 		{
 			$ext_info = array(
@@ -270,7 +270,7 @@ function action_send_mobile_code ()
 				"count" => $count
 			);
 		}
-		
+
 		// 保存手机号码到SESSION中
 		$_SESSION[VT_MOBILE_REGISTER] = $mobile_phone;
 		// 保存验证信息
@@ -293,11 +293,11 @@ function action_check_email_exist ()
 	$smarty = $GLOBALS['smarty'];
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
-	
+
 	$email = empty($_POST['email']) ? '' : $_POST['email'];
-	
+
 	$user = $GLOBALS['user'];
-	
+
 	if($user->check_email($email))
 	{
 		echo 'true';
@@ -315,11 +315,11 @@ function action_check_mobile_exist ()
 	$smarty = $GLOBALS['smarty'];
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
-	
+
 	$mobile = empty($_POST['mobile']) ? '' : $_POST['mobile'];
-	
+
 	$user = $GLOBALS['user'];
-	
+
 	if($user->check_mobile_phone($mobile))
 	{
 		echo 'true';
@@ -335,7 +335,7 @@ function action_check_mobile_exist ()
  */
 function action_default ()
 {
-	
+
 	// 获取全局变量
 	$_CFG = $GLOBALS['_CFG'];
 	$_LANG = $GLOBALS['_LANG'];
@@ -347,19 +347,19 @@ function action_default ()
 	{
 		$back_act = strpos($GLOBALS['_SERVER']['HTTP_REFERER'], 'user.php') ? './index.php' : $GLOBALS['_SERVER']['HTTP_REFERER'];
 	}
-	
+
 	/* 取出注册扩展字段 */
 	$sql = 'SELECT * FROM ' . $ecs->table('reg_fields') . ' WHERE type < 2 AND display = 1 ORDER BY dis_order, id';
 	$extend_info_list = $db->getAll($sql);
 	$smarty->assign('extend_info_list', $extend_info_list);
-	
+
 	/* 验证码相关设置 */
 	if((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
 	{
 		$smarty->assign('enabled_captcha', 1);
 		$smarty->assign('rand', mt_rand());
 	}
-	
+
 	/* 密码提示问题 */
 	$smarty->assign('passwd_questions', $_LANG['passwd_questions']);
 	/* 代码增加_start By uppschina.com */
@@ -386,14 +386,14 @@ function action_default ()
  */
 function action_register ()
 {
-	
+
 	// 获取全局变量
 	$_CFG = $GLOBALS['_CFG'];
 	$_LANG = $GLOBALS['_LANG'];
 	$smarty = $GLOBALS['smarty'];
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
-	
+
 	/* 增加是否关闭注册 */
 	if($_CFG['shop_reg_closed'])
 	{
@@ -404,9 +404,9 @@ function action_register ()
 	else
 	{
 		include_once (ROOT_PATH . 'includes/lib_passport.php');
-		
+
 		$username = isset($_POST['username']) ? trim($_POST['username']) : '';
-		
+
 		$password = isset($_POST['password']) ? trim($_POST['password']) : '';
 		$email = isset($_POST['email']) ? trim($_POST['email']) : '';
 		$other['msn'] = isset($_POST['extend_field1']) ? $_POST['extend_field1'] : '';
@@ -416,39 +416,39 @@ function action_register ()
 		//$other['mobile_phone'] = isset($_POST['extend_field5']) ? $_POST['extend_field5'] : '';
 		$sel_question = empty($_POST['sel_question']) ? '' : compile_str($_POST['sel_question']);
 		$passwd_answer = isset($_POST['passwd_answer']) ? compile_str(trim($_POST['passwd_answer'])) : '';
-		
+
 		// 注册类型：email、mobile
 		$register_type = isset($_POST['register_type']) ? trim($_POST['register_type']) : '';
-		
+
 		$back_act = isset($_POST['back_act']) ? trim($_POST['back_act']) : '';
-		
+
 // 		if(empty($_POST['agreement']))
 // 		{
 // 			show_message($_LANG['passport_js']['agreement']);
 // 		}
-		
+
 		// 注册类型不能为空
 		if(empty($register_type))
 		{
 			show_message($_LANG['passport_js']['msg_register_type_blank']);
 		}
-		
+
 		// 用户名将自动生成
 		if(strlen($username) < 3)
 		{
 			// show_message($_LANG['passport_js']['username_shorter']);
 		}
-		
+
 		if(strlen($password) < 6)
 		{
 			show_message($_LANG['passport_js']['password_shorter']);
 		}
-		
+
 		if(strpos($password, ' ') > 0)
 		{
 			show_message($_LANG['passwd_balnk']);
 		}
-		
+
 		/* 验证码检查 */
 		if((intval($_CFG['captcha']) & CAPTCHA_REGISTER) && gd_version() > 0)
 		{
@@ -456,34 +456,34 @@ function action_register ()
 			{
 				show_message($_LANG['invalid_captcha'], $_LANG['sign_up'], 'register.php', 'error');
 			}
-			
+
 			/* 检查验证码 */
 			include_once ('includes/cls_captcha.php');
-			
+
 			$captcha = new captcha();
-			
+
 			if(! $captcha->check_word(trim($_POST['captcha'])))
 			{
 				show_message($_LANG['invalid_captcha'], $_LANG['sign_up'], 'register.php', 'error');
 			}
 		}
-		
+
 		if($register_type == "email")
 		{
 			/* 邮箱验证码检查 */
 			require_once (ROOT_PATH . 'includes/lib_validate_record.php');
-			
+
 			if(empty($email))
 			{
 				show_message($_LANG['msg_email_blank'], $_LANG['sign_up'], 'register.php', 'error');
 			}
-			
+
 			$record = get_validate_record($email);
-			
+
 			$session_email = $_SESSION[VT_EMAIL_REGISTER];
-			
+
 			$email_code = ! empty($_POST['email_code']) ? trim($_POST['email_code']) : '';
-			
+
 			if(empty($email_code))
 			{
 				show_message($_LANG['msg_email_code_blank'], $_LANG['sign_up'], 'register.php', 'error');
@@ -496,13 +496,13 @@ function action_register ()
 			{
 				show_message($_LANG['invalid_email_code'], $_LANG['sign_up'], 'register.php', 'error');
 			}
-			
+
 			/* 邮箱注册时 */
 			$username = generate_username();
-			
+
 			/* 邮箱注册 */
 			$result = register_by_email($username, $password, $email, $other);
-			
+
 			if($result)
 			{
 				/* 删除注册的验证记录 */
@@ -511,18 +511,18 @@ function action_register ()
 		}
 		else if($register_type == "mobile")
 		{
-			
+
 			require_once (ROOT_PATH . 'includes/lib_validate_record.php');
-			
+
 			$mobile_phone = ! empty($_POST['mobile_phone']) ? trim($_POST['mobile_phone']) : '';
 			$mobile_code = ! empty($_POST['mobile_code']) ? trim($_POST['mobile_code']) : '';
-			
+
 			$record = get_validate_record($mobile_phone);
-			
+
 			$session_mobile_phone = $_SESSION[VT_MOBILE_REGISTER];
-			
+
 			/* 手机验证码检查 */
-			
+
 			if(empty($mobile_code))
 			{
 				show_message($_LANG['msg_mobile_phone_blank'], $_LANG['sign_up'], 'register.php', 'error');
@@ -542,13 +542,13 @@ function action_register ()
 			{
 				show_message($_LANG['invalid_mobile_phone_code'], $_LANG['sign_up'], 'register.php', 'error');
 			}
-			
+
 			/* 手机注册时，用户名默认为u+手机号 */
 			$username = generate_username_by_mobile($mobile_phone);
-			
+
 			/* 手机注册 */
 			$result = register_by_mobile($username, $password, $mobile_phone, $other);
-			
+
 			if($result)
 			{
 				/* 删除注册的验证记录 */
@@ -560,16 +560,16 @@ function action_register ()
 			/* 无效的注册类型 */
 			show_message($_LANG['register_type_invalid'], $_LANG['sign_up'], 'register.php', 'error');
 		}
-		
+
 		/* 随进生成用户名 */
 		// $username = generate_username();
-		
+
 		if($result)
 		{
 			/* 把新注册用户的扩展信息插入数据库 */
 			$sql = 'SELECT id FROM ' . $ecs->table('reg_fields') . ' WHERE type = 0 AND display = 1 ORDER BY dis_order, id'; // 读出所有自定义扩展字段的id
 			$fields_arr = $db->getAll($sql);
-			
+
 			$extend_field_str = ''; // 生成扩展字段的内容字符串
 			foreach($fields_arr as $val)
 			{
@@ -581,7 +581,7 @@ function action_register ()
 				}
 			}
 			$extend_field_str = substr($extend_field_str, 0, - 1);
-			
+
 			if($extend_field_str) // 插入注册扩展数据
 			{
 				$sql = 'INSERT INTO ' . $ecs->table('reg_extend_info') . ' (`user_id`, `reg_field_id`, `content`) VALUES' . $extend_field_str;
@@ -594,7 +594,7 @@ function action_register ()
 			// is_validated = 1 where user_id = '" . $_SESSION['user_id'] . "'";
 			// $GLOBALS['db']->query($sql);
 			// }
-			
+
 			// if($other['mobile_phone'] != '')
 			// {
 			// if($_CFG['sms_register'] == 1)
@@ -627,14 +627,14 @@ function action_register ()
 			 * }
 			 * 代码增加_end By uppschina.com
 			 */
-			
+
 			/* 写入密码提示问题和答案 */
 			if(! empty($passwd_answer) && ! empty($sel_question))
 			{
 				$sql = 'UPDATE ' . $ecs->table('users') . " SET `passwd_question`='$sel_question', `passwd_answer`='$passwd_answer'  WHERE `user_id`='" . $_SESSION['user_id'] . "'";
 				$db->query($sql);
 			}
-			
+
 			/* 代码增加_start By uppschina.com */
 			$now = gmtime();
 			if($_CFG['bonus_reg_rand'])
@@ -655,56 +655,51 @@ function action_register ()
 				$_LANG['register_success'] = '用户名 %s 注册成功,并获得官方赠送的红包礼品';
 			}
 			/* 代码增加_end By uppschina.com */
-			
+
 			/* 判断是否需要自动发送注册邮件 */
 			if($GLOBALS['_CFG']['member_email_validate'] && $GLOBALS['_CFG']['send_verify_email'])
 			{
 				send_regiter_hash($_SESSION['user_id']);
 			}
-			
+
 			//修改新注册的用户成为普通分销商
-			$GLOBALS['db']->query("UPDATE ".$GLOBALS['ecs']->table('users')." SET is_fenxiao = 2 WHERE user_id = '" . $_SESSION['user_id'] . "'");
-			
+			$GLOBALS['db']->query("UPDATE ".$GLOBALS['ecs']->table('users')." SET is_fenxiao = 0 WHERE user_id = '" . $_SESSION['user_id'] . "'");
 			//绑定微信
 			if(isset($_SESSION['wxid']))
 			{
-				$sql = "UPDATE " . $GLOBALS['ecs']->table('weixin_user') . 
+				$sql = "UPDATE " . $GLOBALS['ecs']->table('weixin_user') .
 				   " SET ecuid = 0 WHERE ecuid = '" . $_SESSION['user_id'] . "'";
 				$GLOBALS['db']->query($sql);
-				$sql = "UPDATE " . $GLOBALS['ecs']->table('weixin_user') . 
-				   	" SET ecuid = '" . $_SESSION['user_id'] . "'" . 
+				$sql = "UPDATE " . $GLOBALS['ecs']->table('weixin_user') .
+				   	" SET ecuid = '" . $_SESSION['user_id'] . "'" .
 				   	" WHERE fake_id = '" . $_SESSION['wxid'] . "'";
 				$num = $GLOBALS['db']->query($sql);
 				if($num > 0)
 				{
-					$sql = "SELECT parent_id FROM " . 
-							$GLOBALS['ecs']->table('bind_record') . 
+					$sql = "SELECT parent_id FROM " .
+							$GLOBALS['ecs']->table('bind_record') .
 							" WHERE wxid = '" . $_SESSION['wxid'] . "'";
 					$parent_id = $GLOBALS['db']->getOne($sql);
 					if($parent_id)
 					{
 						//扫描分销商二维码，绑定上级分销商
-						$GLOBALS['db']->query("UPDATE " . 
-								$GLOBALS['ecs']->table('users') . 
+						$GLOBALS['db']->query("UPDATE " .
+								$GLOBALS['ecs']->table('users') .
 								" SET parent_id = '$parent_id'" .
 								" WHERE user_id = '" . $_SESSION['user_id'] . "'");
-						$GLOBALS['db']->query("DELETE FROM " . 
-								$GLOBALS['ecs']->table('bind_record') . 
+						$GLOBALS['db']->query("DELETE FROM " .
+								$GLOBALS['ecs']->table('bind_record') .
 								" WHERE wxid = '" . $_SESSION['wxid'] . "'");
 					}
 					$smarty->assign('tag','2');
-					$smarty->assign('shop_name',$GLOBALS['_CFG']['shop_name']); 
+					$smarty->assign('shop_name',$GLOBALS['_CFG']['shop_name']);
 					$smarty->display('weixin_open.dwt');
 					exit;
 				}
 			}
-			
+
 			$ucdata = empty($user->ucdata) ? "" : $user->ucdata;
-			show_message(sprintf($_LANG['register_success'], $username . $ucdata), array(
-				$_LANG['back_up_page'],$_LANG['profile_lnk']
-			), array(
-				$back_act,'user.php'
-			), 'info');
+			show_message(sprintf($_LANG['register_success'], $username . $ucdata), array($_LANG['back_up_page'],$_LANG['profile_lnk']), array($back_act,'user.php'), 'info');
 		}
 		else
 		{
@@ -717,7 +712,7 @@ function action_register ()
 /**
  * 随机生成指定长度的数字
  *
- * @param number $length        	
+ * @param number $length
  * @return number
  */
 function rand_number ($length = 6)
@@ -726,14 +721,14 @@ function rand_number ($length = 6)
 	{
 		$length = 6;
 	}
-	
+
 	$min = 1;
 	for($i = 0; $i < $length - 1; $i ++)
 	{
 		$min = $min * 10;
 	}
 	$max = $min * 10 - 1;
-	
+
 	return rand($min, $max);
 }
 
@@ -757,7 +752,7 @@ function generate_username_by_mobile ($mobile)
 	}
 
 	$username .= substr($mobile, -4);
-	
+
 	$sql = "select count(*) from " . $GLOBALS['ecs']->table('users') . " where user_name = '$username'";
 	$count = $GLOBALS['db']->getOne($sql);
 	if($count > 0)
@@ -788,7 +783,7 @@ function generate_username ()
 	}
 
 	$username .= rand_number(4);
-	
+
 	$sql = "select count(*) from " . $GLOBALS['ecs']->table('users') . " where user_name = '$username'";
 	$count = $GLOBALS['db']->getOne($sql);
 	if($count > 0)
