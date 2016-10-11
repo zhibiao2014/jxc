@@ -3,7 +3,7 @@
 <!--top-->
 <div class="com_top border_bottm">
 <em>{if $headimgurl neq ''}<img src="{$headimgurl}">{else}<img src="themesmobile/68ecshopcom_mobile/images/user/user68.jpg">{/if}</em>
-<i>{$rank_name}</i>
+<!-- <i>{$rank_name}</i> -->
 <dl>
 <dt><a href="user.php?act=profile">设置</a></dt>
 <dd><span>{$info.username}</span></dd><dd class="roles">{if $info.is_patient != 0}<font>{$yzk_user}</font>{/if}{if $info.is_fenxiao != 0}<font>{$doctor_type[$info.doctor_type]}</font>{/if}{if $info.agency_type != 0}<font>{$agency_type[$info.agency_type]}</font>{/if}</dd>
