@@ -6,7 +6,7 @@
  * 版权所有 2016 深圳庆丰裕，并保留所有权利。
  * 网站地址: http://uppschina.com;
  * ----------------------------------------------------------------------------
- 
+
  * ============================================================================
  * $Author: derek $
  * $Id: lib_passport.php 17217 2011-01-19 06:29:08Z derek $
@@ -291,7 +291,7 @@ function _register ($username, $password, $email_or_mobile, $other = array(), $r
  *        	注册email
  * @param array $other
  *        	注册的其他信息
- *        	
+ *
  * @return bool $bool
  */
 function register($username, $password, $email, $other = array())
@@ -742,7 +742,7 @@ function validate_email_code ($email, $email_code)
 
 	/* 删除注册的验证记录 */
 	remove_validate_record($email);
-	
+
 	return 0;
 }
 
