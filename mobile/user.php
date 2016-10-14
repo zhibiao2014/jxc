@@ -3558,8 +3558,8 @@ function action_affirm_received()
 	include_once (ROOT_PATH . 'includes/lib_transaction.php');
 
 	$order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
-// 	if(affirm_received($order_id, $user_id))
-	if(1)
+	if(affirm_received($order_id, $user_id))
+	// if(1)
 	{
 		if($GLOBALS['_CFG']['distrib_style'] == 0)
 		{
