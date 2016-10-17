@@ -3553,13 +3553,11 @@ function action_affirm_received()
 	$db = $GLOBALS['db'];
 	$ecs = $GLOBALS['ecs'];
 	$user_id = $GLOBALS['user_id'];
-// 	var_dump($GLOBALS['_CFG']['distrib_style']);exit();
 	require_once(ROOT_PATH . '/includes/lib_order.php');
 	include_once (ROOT_PATH . 'includes/lib_transaction.php');
 
 	$order_id = isset($_GET['order_id']) ? intval($_GET['order_id']) : 0;
-// 	if(affirm_received($order_id, $user_id))
-	if(1)
+	if(affirm_received($order_id, $user_id))
 	{
 		if($GLOBALS['_CFG']['distrib_style'] == 0)
 		{
@@ -3577,11 +3575,9 @@ function action_affirm_received()
 				if($split_money > 0)
 				{
 					$num = count($affiliate['item']);//分成级数
-// 					var_dump($num);exit();
 					for ($i=0; $i < $num; $i++)
 					{
 						$affiliate['item'][$i]['level_money'] = (float)$affiliate['item'][$i]['level_money'];
-// 						var_dump($affiliate['item'][$i]['level_money']);exit();
 						if($affiliate['config']['level_money_all']==100 )
 						{
 							$setmoney = $split_money;
